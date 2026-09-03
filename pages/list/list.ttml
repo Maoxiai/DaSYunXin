@@ -1,0 +1,23 @@
+<view class="list-area" tt:if="{{chips.length > 0}}">
+  <view
+    class="result-item"
+    tt:for="{{chips}}"
+    tt:key="id"
+    bindtap="openDetail"
+    data-id="{{item.id}}"
+  >
+    <view class="ri-top">
+      <text class="ri-model">{{item.model}}</text>
+      <view class="ri-badges">
+        <text class="badge">{{item.vendor}}</text>
+        <text class="badge badge-cat">{{item.category}}</text>
+      </view>
+    </view>
+    <view class="ri-specs">{{item.spec}}</view>
+    <view class="ri-summary">{{item.summary}}</view>
+  </view>
+</view>
+
+<view class="empty" tt:if="{{chips.length === 0}}">
+  <text class="empty-text">该分类暂未收录芯片</text>
+</view>

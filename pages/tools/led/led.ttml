@@ -1,0 +1,41 @@
+<view class="card">
+  <view class="card-title">输入参数</view>
+  <view class="field-row">
+    <text class="field-label">电源电压 Vs（V）</text>
+    <input class="field-input" type="digit" value="{{vs}}" data-key="vs" bindinput="onField" placeholder="如 5" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">LED 正向压降 Vf（V）</text>
+    <input class="field-input" type="digit" value="{{vf}}" data-key="vf" bindinput="onField" placeholder="如 2.0" />
+  </view>
+  <view class="preset-list">
+    <view class="preset" tt:for="{{vfPresets}}" tt:key="name" bindtap="setVf" data-v="{{item.v}}">{{item.name}}</view>
+  </view>
+  <view class="field-row">
+    <text class="field-label">目标电流 I（mA）</text>
+    <input class="field-input" type="digit" value="{{i}}" data-key="i" bindinput="onField" placeholder="如 10" />
+  </view>
+  <view class="preset-list">
+    <view class="preset" bindtap="setCurrent" data-i="5">5mA 指示</view>
+    <view class="preset" bindtap="setCurrent" data-i="10">10mA 常规</view>
+    <view class="preset" bindtap="setCurrent" data-i="20">20mA 高亮</view>
+  </view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{result}}">
+  <view class="rc-label">推荐限流电阻（E24 标准值）</view>
+  <view class="rc-value">{{result.rStd}}</view>
+  <view class="rc-sub">理论阻值 {{result.rIdeal}} · 实际电流 {{result.iStd}}</view>
+  <view class="rc-sub">电阻功率 {{result.pRes}} · {{result.hint}}</view>
+  <view class="rc-sub">LED 功耗 {{result.pLed}}</view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">R = (Vs − Vf) / I</view>
+  <view class="formula">取标准值向上 → 实际电流略低于目标，更安全</view>
+</view>
+
+<view class="foot-tip">常见 Vf：红 2.0 / 黄 2.1 / 绿 2.2 / 蓝 3.0 / 白 3.3V</view>

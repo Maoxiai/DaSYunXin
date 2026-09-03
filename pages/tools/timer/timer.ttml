@@ -1,0 +1,65 @@
+<!-- 模式切换 -->
+<view class="seg-bar">
+  <view class="seg {{mode === 'forward' ? 'active' : ''}}" bindtap="setMode" data-mode="forward">PSC/ARR → 周期</view>
+  <view class="seg {{mode === 'reverse' ? 'active' : ''}}" bindtap="setMode" data-mode="reverse">周期 → PSC/ARR</view>
+</view>
+
+<!-- 时钟频率 -->
+<view class="card">
+  <view class="card-title">定时器时钟频率（MHz）</view>
+  <input class="num-input" type="digit" value="{{clock}}" bindinput="onClockInput" placeholder="如 72" />
+  <view class="preset-list">
+    <view
+      class="preset {{clock === String(item) ? 'active' : ''}}"
+      tt:for="{{[8, 16, 48, 64, 72, 84, 168]}}"
+      tt:key="*this"
+      bindtap="setPreset"
+      data-value="{{item}}"
+    >{{item}}</view>
+  </view>
+</view>
+
+<!-- 正向：求周期 -->
+<view tt:if="{{mode === 'forward'}}">
+  <view class="card">
+    <view class="card-title">定时器参数</view>
+    <view class="two-col">
+      <view class="col-item">
+        <text class="col-label">预分频 PSC（0~65535）</text>
+        <input class="num-input" type="number" value="{{psc}}" bindinput="onPscInput" placeholder="0" />
+      </view>
+      <view class="col-item">
+        <text class="col-label">重装值 ARR（0~65535）</text>
+        <input class="num-input" type="number" value="{{arr}}" bindinput="onArrInput" placeholder="0" />
+      </view>
+    </view>
+  </view>
+  <view class="error-card" tt:if="{{forwardError}}">{{forwardError}}</view>
+  <view class="result-card" tt:if="{{period}}">
+    <view class="rc-label">溢出 / 中断周期</view>
+    <view class="rc-value">{{period}}</view>
+    <view class="rc-sub">中断频率 {{freq}}</view>
+  </view>
+</view>
+
+<!-- 反向：求 PSC/ARR -->
+<view tt:if="{{mode === 'reverse'}}">
+  <view class="card">
+    <view class="card-title">目标周期</view>
+    <view class="target-row">
+      <input class="num-input target-input" type="digit" value="{{target}}" bindinput="onTargetInput" placeholder="如 500" />
+      <view class="seg-bar unit-bar">
+        <view class="seg {{unit === 'us' ? 'active' : ''}}" bindtap="setUnit" data-unit="us">μs</view>
+        <view class="seg {{unit === 'ms' ? 'active' : ''}}" bindtap="setUnit" data-unit="ms">ms</view>
+        <view class="seg {{unit === 's' ? 'active' : ''}}" bindtap="setUnit" data-unit="s">s</view>
+      </view>
+    </view>
+  </view>
+  <view class="error-card" tt:if="{{reverseError}}">{{reverseError}}</view>
+  <view class="sug-card" tt:for="{{suggestions}}" tt:key="index">
+    <view class="sug-params">PSC = {{item.psc}} · ARR = {{item.arr}}</view>
+    <view class="sug-detail">实际周期 {{item.period}}（{{item.freq}}）· {{item.errText}}</view>
+  </view>
+</view>
+
+<view class="foot-tip">公式：T = (PSC+1) × (ARR+1) / f（向上计数，无重复计数）</view>

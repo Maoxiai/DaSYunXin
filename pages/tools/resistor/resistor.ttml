@@ -1,0 +1,46 @@
+<!-- 环数切换 -->
+<view class="seg-bar">
+  <view class="seg {{bandCount === 4 ? 'active' : ''}}" bindtap="setCount" data-count="4">4 环</view>
+  <view class="seg {{bandCount === 5 ? 'active' : ''}}" bindtap="setCount" data-count="5">5 环</view>
+  <view class="seg {{bandCount === 6 ? 'active' : ''}}" bindtap="setCount" data-count="6">6 环</view>
+</view>
+
+<!-- 电阻可视化 -->
+<view class="resistor-visual">
+  <view class="wire left"></view>
+  <view class="resistor-body">
+    <view class="band" tt:for="{{bands}}" tt:key="index" style="background: {{item.color}}"></view>
+  </view>
+  <view class="wire right"></view>
+</view>
+
+<!-- 结果 -->
+<view class="result-card">
+  <view class="rc-value">{{resultText}}</view>
+  <view class="rc-detail" tt:if="{{resultDetail}}">读数：{{resultDetail}}</view>
+</view>
+
+<!-- 逐环配置 -->
+<view class="band-config">
+  <view class="band-row" tt:for="{{config}}" tt:for-item="band" tt:key="key">
+    <view class="band-label">{{band.label}} · {{band.role}}</view>
+    <view class="color-list">
+      <view
+        class="color-item {{band.selected === cIndex ? 'selected' : ''}}"
+        tt:for="{{band.colors}}"
+        tt:for-item="color"
+        tt:for-index="cIndex"
+        tt:key="name"
+        bindtap="selectColor"
+        data-bindex="{{index}}"
+        data-cindex="{{cIndex}}"
+      >
+        <view class="color-dot" style="background: {{color.color}}"></view>
+        <text class="color-name">{{color.name}}</text>
+        <text class="color-sub">{{color.sub}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="foot-tip">金色/银色环为精度环，通常位于末位</view>

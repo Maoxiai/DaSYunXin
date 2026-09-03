@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/tools/tools",
+    "pages/mine/mine",
+    "pages/detail/detail",
+    "pages/list/list",
+    "pages/tools/resistor/resistor",
+    "pages/tools/converter/converter",
+    "pages/tools/divider/divider",
+    "pages/tools/timer/timer",
+    "pages/tools/protocol/protocol",
+    "pages/tools/units/units",
+    "pages/tools/led/led",
+    "pages/tools/ohm/ohm",
+    "pages/tools/rc/rc",
+    "pages/tools/adc/adc"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "猫夏云芯",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4A90E2",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/tabbar/home.png",
+        "selectedIconPath": "assets/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "assets/tabbar/category.png",
+        "selectedIconPath": "assets/tabbar/category-active.png"
+      },
+      {
+        "pagePath": "pages/tools/tools",
+        "text": "工具箱",
+        "iconPath": "assets/tabbar/tools.png",
+        "selectedIconPath": "assets/tabbar/tools-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "assets/tabbar/mine.png",
+        "selectedIconPath": "assets/tabbar/mine-active.png"
+      }
+    ]
+  }
+}

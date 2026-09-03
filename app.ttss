@@ -1,0 +1,38 @@
+/* 猫夏云芯 全局样式 */
+page {
+  background: #f5f6fa;
+  font-size: 28rpx;
+  color: #333;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 通用徽章 */
+.badge {
+  display: inline-block;
+  padding: 2rpx 14rpx;
+  font-size: 20rpx;
+  color: #4A90E2;
+  background: rgba(74, 144, 226, 0.12);
+  border-radius: 8rpx;
+  margin-right: 12rpx;
+}
+
+.badge-cat {
+  color: #9b59b6;
+  background: rgba(155, 89, 182, 0.12);
+}
+
+/* 通用面板 */
+.panel {
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.panel-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}

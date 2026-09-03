@@ -1,0 +1,46 @@
+<view class="card">
+  <view class="card-title">RC 参数</view>
+  <view class="field-row">
+    <text class="field-label">电阻 R</text>
+    <input class="field-input" type="digit" value="{{r}}" bindinput="onR" placeholder="如 10k" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">电容 C</text>
+    <input class="field-input cap-input" type="digit" value="{{c}}" bindinput="onC" placeholder="如 100" />
+    <view class="seg-bar unit-bar">
+      <view class="seg {{capUnit === 'pf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="pf">pF</view>
+      <view class="seg {{capUnit === 'nf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="nf">nF</view>
+      <view class="seg {{capUnit === 'uf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="uf">μF</view>
+      <view class="seg {{capUnit === 'mf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="mf">mF</view>
+    </view>
+  </view>
+  <view class="preset-list">
+    <view class="preset" tt:for="{{capPresets}}" tt:key="label" bindtap="setCapPreset" data-v="{{item.v}}" data-unit="{{item.unit}}">{{item.label}}</view>
+  </view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{tau}}">
+  <view class="rc-label">时间常数 τ = RC</view>
+  <view class="rc-value">{{tau}}</view>
+  <view class="rc-sub">RC 低通/高通滤波器截止频率 fc ≈ {{fc}}</view>
+</view>
+
+<view class="card" tt:if="{{steps.length > 0}}">
+  <view class="card-title">充电过程（达到目标电压百分比所需时间）</view>
+  <view class="charge-row" tt:for="{{steps}}" tt:key="pct">
+    <text class="charge-pct">{{item.pct}}</text>
+    <text class="charge-time">{{item.time}}</text>
+  </view>
+  <view class="hint">放电到剩余 36.8% / 13.5% / 5.0% / 1.8% / 0.7% 的时间与上表相同</view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">τ = R × C</view>
+  <view class="formula">fc = 1 / (2πRC)</view>
+  <view class="formula">上电复位 / 延时：按 1~2τ 估算即可</view>
+</view>
+
+<view class="foot-tip">典型应用：上电复位延时、按键消抖、RC 滤波</view>

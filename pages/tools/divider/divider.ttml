@@ -1,0 +1,32 @@
+<view class="card">
+  <view class="card-title">填写任意三项，留空一项自动求解</view>
+  <view class="field-row" tt:for="{{fields}}" tt:key="key">
+    <view class="field-info">
+      <text class="field-label">{{item.label}}</text>
+      <text class="field-unit">单位：{{item.unit}}</text>
+    </view>
+    <input
+      class="field-input"
+      placeholder="{{item.ph}}"
+      value="{{values[item.key]}}"
+      data-key="{{item.key}}"
+      bindinput="onFieldInput"
+    />
+  </view>
+  <view class="hint">电阻支持简写：470 = 470Ω，4.7k = 4.7kΩ，1M = 1MΩ</view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{resultValue}}">
+  <view class="rc-label">{{resultLabel}}</view>
+  <view class="rc-value">{{resultValue}}</view>
+  <view class="rc-sub" tt:if="{{currentText}}">{{currentText}}</view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">Vout = Vin × R2 / (R1 + R2)</view>
+  <view class="formula">R1 = R2 × (Vin − Vout) / Vout</view>
+  <view class="formula">R2 = R1 × Vout / (Vin − Vout)</view>
+</view>

@@ -1,0 +1,12 @@
+# 抖音开发者工具
+.DS_Store
+project.private.config.json
+
+# 依赖
+node_modules/
+
+# 日志
+*.log
+
+# 系统文件
+Thumbs.db

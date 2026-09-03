@@ -1,0 +1,14 @@
+<view class="tool-grid">
+  <view
+    class="tool-item"
+    tt:for="{{tools}}"
+    tt:key="id"
+    bindtap="openTool"
+    data-id="{{item.id}}"
+  >
+    <text class="tool-icon">{{item.icon}}</text>
+    <text class="tool-name">{{item.name}}</text>
+    <text class="tool-desc">{{item.desc}}</text>
+  </view>
+</view>
+<view class="foot-tip">全部工具离线可用</view>

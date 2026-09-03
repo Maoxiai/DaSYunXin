@@ -1,0 +1,83 @@
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.card-title {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.seg-bar {
+  display: flex;
+  background: #f5f6fa;
+  border-radius: 12rpx;
+  padding: 6rpx;
+}
+
+.seg {
+  flex: 1;
+  text-align: center;
+  padding: 14rpx 0;
+  font-size: 26rpx;
+  color: #666;
+  border-radius: 8rpx;
+}
+
+.seg.active {
+  background: #4A90E2;
+  color: #fff;
+  font-weight: 600;
+}
+
+.num-input {
+  margin-top: 20rpx;
+  height: 84rpx;
+  background: #f5f6fa;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 32rpx;
+  font-family: Menlo, Consolas, monospace;
+}
+
+.error-tip {
+  color: #e53935;
+  font-size: 24rpx;
+  margin-top: 14rpx;
+}
+
+.out-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f2f3f7;
+}
+
+.out-row:last-child {
+  border-bottom: none;
+}
+
+.out-label {
+  width: 200rpx;
+  font-size: 24rpx;
+  color: #999;
+  flex-shrink: 0;
+}
+
+.out-value {
+  flex: 1;
+  font-size: 30rpx;
+  font-family: Menlo, Consolas, monospace;
+  word-break: break-all;
+}
+
+.foot-tip {
+  text-align: center;
+  color: #b8bdc9;
+  font-size: 22rpx;
+  padding: 10rpx 0 50rpx;
+}

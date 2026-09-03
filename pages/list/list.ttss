@@ -1,0 +1,51 @@
+.list-area {
+  margin: 20rpx;
+}
+
+.result-item {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.ri-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.ri-model {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.ri-badges {
+  display: flex;
+  align-items: center;
+}
+
+.ri-specs {
+  font-size: 24rpx;
+  color: #4A90E2;
+  margin-bottom: 10rpx;
+}
+
+.ri-summary {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.empty {
+  padding: 200rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}

@@ -1,0 +1,38 @@
+<!-- 输入进制 -->
+<view class="card">
+  <view class="card-title">输入进制</view>
+  <view class="seg-bar">
+    <view class="seg {{inputBase === 'dec' ? 'active' : ''}}" bindtap="onBaseChange" data-base="dec">10 进制</view>
+    <view class="seg {{inputBase === 'hex' ? 'active' : ''}}" bindtap="onBaseChange" data-base="hex">16 进制</view>
+    <view class="seg {{inputBase === 'bin' ? 'active' : ''}}" bindtap="onBaseChange" data-base="bin">2 进制</view>
+    <view class="seg {{inputBase === 'oct' ? 'active' : ''}}" bindtap="onBaseChange" data-base="oct">8 进制</view>
+  </view>
+  <input
+    class="num-input"
+    placeholder="输入数值，如 255 / 0xFF"
+    value="{{inputValue}}"
+    bindinput="onInput"
+  />
+  <view class="error-tip" tt:if="{{error}}">{{error}}</view>
+</view>
+
+<!-- 位宽 -->
+<view class="card">
+  <view class="card-title">展示位宽</view>
+  <view class="seg-bar">
+    <view class="seg {{bitWidth === 8 ? 'active' : ''}}" bindtap="onWidthChange" data-width="8">8 位</view>
+    <view class="seg {{bitWidth === 16 ? 'active' : ''}}" bindtap="onWidthChange" data-width="16">16 位</view>
+    <view class="seg {{bitWidth === 32 ? 'active' : ''}}" bindtap="onWidthChange" data-width="32">32 位</view>
+  </view>
+</view>
+
+<!-- 输出 -->
+<view class="card" tt:if="{{outputs.length > 0}}">
+  <view class="card-title">转换结果（点击复制）</view>
+  <view class="out-row" tt:for="{{outputs}}" tt:key="key" bindtap="copyRow" data-value="{{item.value}}">
+    <text class="out-label">{{item.label}}</text>
+    <text class="out-value">{{item.value}}</text>
+  </view>
+</view>
+
+<view class="foot-tip">寄存器值、协议字段、位掩码快速换算</view>

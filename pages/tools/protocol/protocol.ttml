@@ -1,0 +1,44 @@
+<view class="proto-tabs">
+  <view
+    class="proto-tab {{active === item.key ? 'active' : ''}}"
+    tt:for="{{list}}"
+    tt:key="key"
+    bindtap="switchProto"
+    data-key="{{item.key}}"
+  >{{item.name}}</view>
+</view>
+
+<block tt:for="{{list}}" tt:for-item="proto" tt:key="key">
+  <view tt:if="{{active === proto.key}}">
+    <view class="proto-head">
+      <text class="proto-name">{{proto.name}}</text>
+      <text class="proto-sub">{{proto.subtitle}}</text>
+    </view>
+
+    <view class="panel">
+      <view class="panel-title">信号定义</view>
+      <view class="pin-row" tt:for="{{proto.pins}}" tt:for-item="pin" tt:key="pin">
+        <text class="pin-name">{{pin.pin}}</text>
+        <text class="pin-desc">{{pin.desc}}</text>
+      </view>
+    </view>
+
+    <view class="panel">
+      <view class="panel-title">关键参数</view>
+      <view class="kv-row" tt:for="{{proto.params}}" tt:for-item="p" tt:key="k">
+        <text class="kv-k">{{p.k}}</text>
+        <text class="kv-v">{{p.v}}</text>
+      </view>
+    </view>
+
+    <view class="panel">
+      <view class="panel-title">实战要点</view>
+      <view class="tip-row" tt:for="{{proto.tips}}" tt:for-item="tip" tt:key="*this">
+        <text class="tip-dot">·</text>
+        <text class="tip-text">{{tip}}</text>
+      </view>
+    </view>
+  </view>
+</block>
+
+<view class="foot-tip">调试总线优先检查：共地、波特率/模式匹配、上拉电阻</view>

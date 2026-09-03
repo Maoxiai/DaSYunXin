@@ -1,0 +1,46 @@
+<view class="card">
+  <view class="card-title">ADC 配置</view>
+  <view class="field-row">
+    <text class="field-label">参考电压 Vref（V）</text>
+    <input class="field-input" type="digit" value="{{vref}}" bindinput="onVref" placeholder="如 3.3" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">分辨率（位）</text>
+    <view class="seg-bar unit-bar">
+      <view class="seg {{item.sel ? 'active' : ''}}" tt:for="{{bitList}}" tt:key="v" bindtap="setBits" data-bits="{{item.v}}">{{item.label}}</view>
+    </view>
+  </view>
+  <view class="hint">{{hint}}</view>
+</view>
+
+<view class="card">
+  <view class="card-title">换算（填一项，自动算另一项）</view>
+  <view class="field-row">
+    <text class="field-label">ADC 读数（{{rangeText}}）</text>
+    <input class="field-input" type="number" value="{{reading}}" bindinput="onReading" placeholder="如 2048" />
+  </view>
+  <view class="swap-arrow">↕</view>
+  <view class="field-row">
+    <text class="field-label">实际电压（V）</text>
+    <input class="field-input" type="digit" value="{{voltage}}" bindinput="onVoltage" placeholder="如 1.65" />
+  </view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{outVoltage}}">
+  <view class="rc-label">对应电压</view>
+  <view class="rc-value">{{outVoltage}}</view>
+</view>
+<view class="result-card" tt:if="{{outReading}}">
+  <view class="rc-label">对应读数</view>
+  <view class="rc-value">{{outReading}}</view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">V = 读数 / (2^n - 1) × Vref</view>
+  <view class="formula">读数 = V / Vref × (2^n - 1)</view>
+</view>
+
+<view class="foot-tip">调试时先确认参考电压来源：VREF+ 引脚 / VDDA / 内部基准</view>

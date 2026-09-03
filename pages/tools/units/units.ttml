@@ -1,0 +1,67 @@
+<!-- 功率换算 -->
+<view class="card">
+  <view class="card-title">功率换算 dBm ↔ mW</view>
+  <view class="seg-bar">
+    <view class="seg {{powerDir === 'toMw' ? 'active' : ''}}" bindtap="setPowerDir" data-dir="toMw">dBm → mW</view>
+    <view class="seg {{powerDir === 'toDbm' ? 'active' : ''}}" bindtap="setPowerDir" data-dir="toDbm">mW → dBm</view>
+  </view>
+  <input
+    class="num-input"
+    type="digit"
+    value="{{powerVal}}"
+    bindinput="onPowerInput"
+    placeholder="{{powerDir === 'toMw' ? '输入 dBm，如 30' : '输入 mW，如 1000'}}"
+  />
+  <view class="mini-result" tt:if="{{powerMain}}">
+    <text class="mr-main">{{powerMain}}</text>
+    <text class="mr-sub" tt:if="{{powerSub}}">{{powerSub}}</text>
+  </view>
+</view>
+
+<!-- 频率/周期 -->
+<view class="card">
+  <view class="card-title">频率 ↔ 周期</view>
+  <view class="seg-bar">
+    <view class="seg {{timeMode === 'freq' ? 'active' : ''}}" bindtap="setTimeMode" data-mode="freq">频率 → 周期</view>
+    <view class="seg {{timeMode === 'period' ? 'active' : ''}}" bindtap="setTimeMode" data-mode="period">周期 → 频率</view>
+  </view>
+  <view class="unit-row">
+    <input class="num-input unit-input" type="digit" value="{{timeVal}}" bindinput="onTimeValInput" placeholder="输入数值" />
+    <view class="seg-bar unit-bar" tt:if="{{timeMode === 'freq'}}">
+      <view class="seg {{freqUnit === 'hz' ? 'active' : ''}}" bindtap="setFreqUnit" data-unit="hz">Hz</view>
+      <view class="seg {{freqUnit === 'khz' ? 'active' : ''}}" bindtap="setFreqUnit" data-unit="khz">kHz</view>
+      <view class="seg {{freqUnit === 'mhz' ? 'active' : ''}}" bindtap="setFreqUnit" data-unit="mhz">MHz</view>
+      <view class="seg {{freqUnit === 'ghz' ? 'active' : ''}}" bindtap="setFreqUnit" data-unit="ghz">GHz</view>
+    </view>
+    <view class="seg-bar unit-bar" tt:if="{{timeMode === 'period'}}">
+      <view class="seg {{timeUnit === 's' ? 'active' : ''}}" bindtap="setTimeUnit" data-unit="s">s</view>
+      <view class="seg {{timeUnit === 'ms' ? 'active' : ''}}" bindtap="setTimeUnit" data-unit="ms">ms</view>
+      <view class="seg {{timeUnit === 'us' ? 'active' : ''}}" bindtap="setTimeUnit" data-unit="us">μs</view>
+      <view class="seg {{timeUnit === 'ns' ? 'active' : ''}}" bindtap="setTimeUnit" data-unit="ns">ns</view>
+    </view>
+  </view>
+  <view class="mini-result" tt:if="{{timeResult}}">
+    <text class="mr-main">{{timeResultLabel}}：{{timeResult}}</text>
+  </view>
+</view>
+
+<!-- 波特率 -->
+<view class="card">
+  <view class="card-title">波特率传输时间（1 字节按 10 位计）</view>
+  <input class="num-input" type="number" value="{{baud}}" bindinput="onBaudInput" placeholder="如 115200" />
+  <view class="preset-list">
+    <view
+      class="preset {{baud === String(item) ? 'active' : ''}}"
+      tt:for="{{baudPresets}}"
+      tt:key="*this"
+      bindtap="setBaudPreset"
+      data-value="{{item}}"
+    >{{item}}</view>
+  </view>
+  <view class="mini-result" tt:if="{{baudByte}}">
+    <text class="mr-main">1 字节 ≈ {{baudByte}}</text>
+    <text class="mr-sub">1 KB ≈ {{baudKb}}</text>
+  </view>
+</view>
+
+<view class="foot-tip">dBm = 10 × log10(P_mW) · T = 1/f</view>

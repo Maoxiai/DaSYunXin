@@ -1,0 +1,114 @@
+.proto-tabs {
+  display: flex;
+  background: #fff;
+  border-radius: 14rpx;
+  margin: 20rpx;
+  padding: 8rpx;
+}
+
+.proto-tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  font-size: 28rpx;
+  color: #666;
+  border-radius: 10rpx;
+}
+
+.proto-tab.active {
+  background: #4A90E2;
+  color: #fff;
+  font-weight: 600;
+}
+
+.proto-head {
+  margin: 0 20rpx 20rpx;
+  display: flex;
+  align-items: baseline;
+}
+
+.proto-name {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-right: 16rpx;
+}
+
+.proto-sub {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.pin-row {
+  display: flex;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid #f2f3f7;
+  align-items: baseline;
+}
+
+.pin-row:last-child {
+  border-bottom: none;
+}
+
+.pin-name {
+  width: 150rpx;
+  flex-shrink: 0;
+  font-size: 27rpx;
+  font-weight: 600;
+  color: #4A90E2;
+  font-family: Menlo, Consolas, monospace;
+}
+
+.pin-desc {
+  flex: 1;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.kv-row {
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f2f3f7;
+  display: flex;
+  flex-direction: column;
+}
+
+.kv-row:last-child {
+  border-bottom: none;
+}
+
+.kv-k {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 6rpx;
+}
+
+.kv-v {
+  font-size: 27rpx;
+  color: #333;
+}
+
+.tip-row {
+  display: flex;
+  margin-bottom: 14rpx;
+}
+
+.tip-dot {
+  color: #4A90E2;
+  font-weight: bold;
+  margin-right: 12rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.tip-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.foot-tip {
+  text-align: center;
+  color: #b8bdc9;
+  font-size: 22rpx;
+  padding: 10rpx 0 50rpx;
+}

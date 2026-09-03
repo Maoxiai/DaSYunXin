@@ -1,0 +1,49 @@
+<view class="card">
+  <view class="card-title">填写任意两项，自动求其余两项</view>
+  <view class="field-row">
+    <view class="field-info">
+      <text class="field-label">电压 V</text>
+      <text class="field-unit">单位：V</text>
+    </view>
+    <input class="field-input" type="digit" value="{{v}}" bindinput="onV" placeholder="如 3.3" />
+  </view>
+  <view class="field-row">
+    <view class="field-info">
+      <text class="field-label">电流 I</text>
+      <text class="field-unit">单位：mA</text>
+    </view>
+    <input class="field-input" type="digit" value="{{i}}" bindinput="onI" placeholder="如 20" />
+  </view>
+  <view class="field-row">
+    <view class="field-info">
+      <text class="field-label">电阻 R</text>
+      <text class="field-unit">单位：Ω / k / M</text>
+    </view>
+    <input class="field-input" type="digit" value="{{r}}" bindinput="onR" placeholder="如 4.7k" />
+  </view>
+  <view class="field-row">
+    <view class="field-info">
+      <text class="field-label">功率 P</text>
+      <text class="field-unit">单位：mW</text>
+    </view>
+    <input class="field-input" type="digit" value="{{p}}" bindinput="onP" placeholder="如 100" />
+  </view>
+  <view class="hint">电阻支持简写：470 = 470Ω，4.7k = 4.7kΩ，1M = 1MΩ</view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{hasResult}}">
+  <view class="out-row" tt:for="{{resultRows}}" tt:key="id">
+    <text class="out-label">{{item.label}}</text>
+    <text class="out-value">{{item.value}}</text>
+  </view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">V = I × R</view>
+  <view class="formula">P = V × I = I^2 × R = V^2 / R</view>
+</view>
+
+<view class="foot-tip">功耗超 1/4W 时注意电阻封装与散热</view>

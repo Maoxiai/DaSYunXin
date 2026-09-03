@@ -1,0 +1,77 @@
+.panel {
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.panel-title {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.link-btn {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid #f2f3f7;
+}
+
+.list-row:last-child {
+  border-bottom: none;
+}
+
+.row-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.row-model {
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.row-sub {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+.row-del {
+  padding: 10rpx 6rpx 10rpx 20rpx;
+  color: #c2c7d1;
+  font-size: 26rpx;
+}
+
+.empty-tip {
+  padding: 30rpx 0;
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.about-text {
+  font-size: 25rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+.about-feedback {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #4A90E2;
+}

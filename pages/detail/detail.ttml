@@ -1,0 +1,45 @@
+<view tt:if="{{chip}}">
+  <!-- 顶部信息卡 -->
+  <view class="hero">
+    <view class="hero-top">
+      <text class="hero-model">{{chip.model}}</text>
+      <view class="fav-btn {{isFav ? 'fav-active' : ''}}" bindtap="toggleFavorite">
+        {{isFav ? '★ 已收藏' : '☆ 收藏'}}
+      </view>
+    </view>
+    <view class="hero-badges">
+      <text class="badge">{{chip.vendor}}</text>
+      <text class="badge badge-cat">{{chip.category}}</text>
+    </view>
+    <text class="hero-summary">{{chip.summary}}</text>
+    <view class="hero-actions">
+      <button class="btn-primary" bindtap="openManual">查看数据手册</button>
+      <button class="btn-plain" bindtap="copySearchUrl">搜索手册</button>
+    </view>
+  </view>
+
+  <!-- 核心参数 -->
+  <view class="panel">
+    <view class="panel-title">核心参数</view>
+    <view class="param-row" tt:for="{{params}}" tt:key="k">
+      <text class="param-key">{{item.k}}</text>
+      <text class="param-val">{{item.v}}</text>
+    </view>
+  </view>
+
+  <!-- 替代/兼容型号 -->
+  <view class="panel" tt:if="{{chip.alts.length > 0}}">
+    <view class="panel-title">替代 / 兼容型号</view>
+    <view class="alt-list">
+      <text
+        class="alt-tag"
+        tt:for="{{chip.alts}}"
+        tt:key="*this"
+        bindtap="tapAlt"
+        data-model="{{item}}"
+      >{{item}}</text>
+    </view>
+  </view>
+
+  <view class="foot-tip">参数仅供参考，选型请以厂商官方数据手册为准</view>
+</view>

@@ -1,0 +1,40 @@
+.tool-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx 12rpx;
+}
+
+.tool-item {
+  width: 336rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 0 12rpx 20rpx;
+  padding: 32rpx 26rpx;
+  box-sizing: border-box;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-icon {
+  font-size: 52rpx;
+  margin-bottom: 16rpx;
+}
+
+.tool-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.tool-desc {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.foot-tip {
+  text-align: center;
+  color: #b8bdc9;
+  font-size: 22rpx;
+  padding: 10rpx 0 40rpx;
+}

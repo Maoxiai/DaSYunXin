@@ -1,0 +1,42 @@
+<!-- 收藏 -->
+<view class="panel">
+  <view class="panel-header">
+    <text class="panel-title">我的收藏（{{favorites.length}}）</text>
+  </view>
+  <block tt:if="{{favorites.length > 0}}">
+    <view class="list-row" tt:for="{{favorites}}" tt:key="id">
+      <view class="row-main" bindtap="openDetail" data-id="{{item.id}}">
+        <text class="row-model">{{item.model}}</text>
+        <text class="row-sub">{{item.vendor}} · {{item.category}}</text>
+      </view>
+      <text class="row-del" catchtap="removeFav" data-id="{{item.id}}">✕</text>
+    </view>
+  </block>
+  <view class="empty-tip" tt:else>暂无收藏，去首页看看热门芯片吧</view>
+</view>
+
+<!-- 浏览历史 -->
+<view class="panel">
+  <view class="panel-header">
+    <text class="panel-title">浏览历史（{{views.length}}）</text>
+    <text class="link-btn" tt:if="{{views.length > 0}}" bindtap="clearViews">清空</text>
+  </view>
+  <block tt:if="{{views.length > 0}}">
+    <view class="list-row" tt:for="{{views}}" tt:key="id">
+      <view class="row-main" bindtap="openDetail" data-id="{{item.id}}">
+        <text class="row-model">{{item.model}}</text>
+        <text class="row-sub">{{item.vendor}}</text>
+      </view>
+    </view>
+  </block>
+  <view class="empty-tip" tt:else>暂无浏览记录</view>
+</view>
+
+<!-- 关于 -->
+<view class="panel">
+  <view class="panel-title">关于 猫夏云芯</view>
+  <view class="about-text">猫夏云芯 —— 嵌入式开发者的芯片手册速查与工具箱。</view>
+  <view class="about-text">芯片搜索 · 参数速览 · 替代料推荐 · 嵌入式常用工具，全部离线可用。</view>
+  <view class="about-text">V1.0.0 · 芯片库持续扩充中</view>
+  <view class="about-feedback" bindtap="copyFeedback">意见反馈：点击复制邮箱 2312891301@qq.com</view>
+</view>
