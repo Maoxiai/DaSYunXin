@@ -1,0 +1,45 @@
+<view class="card">
+  <view class="card-title">电池容量（mAh）</view>
+  <input class="num-input" type="digit" value="{{cap}}" bindinput="onCap" placeholder="如 3000" />
+  <view class="preset-list">
+    <view class="preset" tt:for="{{batPresets}}" tt:key="label" bindtap="setCap" data-cap="{{item.cap}}">{{item.label}}</view>
+  </view>
+</view>
+
+<view class="card">
+  <view class="card-title">系统平均电流（mA）</view>
+  <input class="num-input" type="digit" value="{{current}}" bindinput="onCurrent" placeholder="如 20" />
+  <view class="preset-list">
+    <view class="preset" tt:for="{{loadPresets}}" tt:key="label" bindtap="setLoad" data-i="{{item.i}}">{{item.label}}</view>
+  </view>
+  <view class="hint">平均电流 = Σ(各状态电流 × 时间占比)，休眠为主的设备远小于峰值电流</view>
+</view>
+
+<view class="card">
+  <view class="card-title">其他参数（选填）</view>
+  <view class="field-row">
+    <text class="field-label">转换效率（%）</text>
+    <input class="field-input" type="digit" value="{{efficiency}}" bindinput="onEff" placeholder="默认 100" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">电池电压（V）</text>
+    <input class="field-input" type="digit" value="{{voltage}}" bindinput="onVoltage" placeholder="如 3.7" />
+  </view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{duration}}">
+  <view class="rc-label">理论续航</view>
+  <view class="rc-value">{{durationText}}</view>
+  <view class="rc-sub">约 {{duration}} 小时（未计自放电与截止电压损耗）</view>
+  <view class="rc-sub" tt:if="{{whText}}">{{whText}}</view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">续航(h) = 容量(mAh) × 效率 / 平均电流(mA)</view>
+  <view class="formula">能量(Wh) = 容量(mAh) × 电压(V) / 1000</view>
+</view>
+
+<view class="foot-tip">实际续航受温度、放电倍率、电池老化影响，建议按 80% 折算设计</view>

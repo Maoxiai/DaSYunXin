@@ -1,0 +1,86 @@
+<!-- 模式切换 -->
+<view class="seg-bar">
+  <view class="seg {{mode === 'astable' ? 'active' : ''}}" bindtap="setMode" data-mode="astable">无稳态振荡</view>
+  <view class="seg {{mode === 'monostable' ? 'active' : ''}}" bindtap="setMode" data-mode="monostable">单稳态延时</view>
+</view>
+
+<!-- 无稳态 -->
+<view tt:if="{{mode === 'astable'}}">
+  <view class="card">
+    <view class="card-title">参数（R1 接 VCC 与 7 脚，R2 接 7 脚与 6 脚）</view>
+    <view class="field-row">
+      <text class="field-label">R1</text>
+      <input class="field-input" type="digit" value="{{r1}}" bindinput="onR1" placeholder="如 10k" />
+    </view>
+    <view class="field-row">
+      <text class="field-label">R2</text>
+      <input class="field-input" type="digit" value="{{r2}}" bindinput="onR2" placeholder="如 47k" />
+    </view>
+    <view class="field-row">
+      <text class="field-label">电容 C</text>
+      <input class="field-input cap-input" type="digit" value="{{c}}" bindinput="onC" placeholder="如 10" />
+      <view class="seg-bar unit-bar">
+        <view class="seg {{capUnit === 'pf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="pf">pF</view>
+        <view class="seg {{capUnit === 'nf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="nf">nF</view>
+        <view class="seg {{capUnit === 'uf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="uf">μF</view>
+      </view>
+    </view>
+    <view class="preset-list">
+      <view class="preset" tt:for="{{capPresets}}" tt:key="label" bindtap="setCapPreset" data-v="{{item.v}}" data-unit="{{item.unit}}">{{item.label}}</view>
+    </view>
+  </view>
+
+  <view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+  <view class="result-card" tt:if="{{freq}}">
+    <view class="rc-label">输出频率</view>
+    <view class="rc-value">{{freq}}</view>
+    <view class="rc-sub">周期 {{period}} · 占空比 {{duty}}</view>
+    <view class="rc-sub">高电平 {{tHigh}} · 低电平 {{tLow}}</view>
+  </view>
+
+  <view class="formula-card">
+    <view class="card-title">公式</view>
+    <view class="formula">T高 = 0.693 × (R1 + R2) × C</view>
+    <view class="formula">T低 = 0.693 × R2 × C</view>
+    <view class="formula">占空比 = (R1 + R2) / (R1 + 2R2)</view>
+  </view>
+</view>
+
+<!-- 单稳态 -->
+<view tt:if="{{mode === 'monostable'}}">
+  <view class="card">
+    <view class="card-title">参数（R 接 VCC 与 7/6 脚，C 接 6 脚与地）</view>
+    <view class="field-row">
+      <text class="field-label">定时电阻 R</text>
+      <input class="field-input" type="digit" value="{{r}}" bindinput="onR" placeholder="如 100k" />
+    </view>
+    <view class="field-row">
+      <text class="field-label">定时电容 C</text>
+      <input class="field-input cap-input" type="digit" value="{{c}}" bindinput="onC" placeholder="如 10" />
+      <view class="seg-bar unit-bar">
+        <view class="seg {{capUnit === 'pf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="pf">pF</view>
+        <view class="seg {{capUnit === 'nf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="nf">nF</view>
+        <view class="seg {{capUnit === 'uf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="uf">μF</view>
+      </view>
+    </view>
+    <view class="preset-list">
+      <view class="preset" tt:for="{{capPresets}}" tt:key="label" bindtap="setCapPreset" data-v="{{item.v}}" data-unit="{{item.unit}}">{{item.label}}</view>
+    </view>
+  </view>
+
+  <view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+  <view class="result-card" tt:if="{{pulse}}">
+    <view class="rc-label">输出脉宽</view>
+    <view class="rc-value">{{pulse}}</view>
+    <view class="rc-sub">触发一次，输出高电平保持该时长后自动复位</view>
+  </view>
+
+  <view class="formula-card">
+    <view class="card-title">公式</view>
+    <view class="formula">t = 1.1 × R × C</view>
+  </view>
+</view>
+
+<view class="foot-tip">经典应用：方波发生 / PWM / 按键消抖 / 延时开关</view>

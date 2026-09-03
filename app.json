@@ -15,7 +15,9 @@
     "pages/tools/led/led",
     "pages/tools/ohm/ohm",
     "pages/tools/rc/rc",
-    "pages/tools/adc/adc"
+    "pages/tools/adc/adc",
+    "pages/tools/ne555/ne555",
+    "pages/tools/battery/battery"
   ],
   "window": {
     "backgroundTextStyle": "light",

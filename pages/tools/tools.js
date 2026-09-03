@@ -8,7 +8,9 @@ const tools = [
   { id: 'led', icon: '💡', name: 'LED 限流电阻', desc: '阻值计算与推荐' },
   { id: 'ohm', icon: '🔌', name: '欧姆定律', desc: 'V/I/R/P 任填两项' },
   { id: 'rc', icon: '⏳', name: 'RC 时间常数', desc: '充放电与滤波频率' },
-  { id: 'adc', icon: '📊', name: 'ADC 换算', desc: '读数与电压互转' }
+  { id: 'adc', icon: '📊', name: 'ADC 换算', desc: '读数与电压互转' },
+  { id: 'ne555', icon: '🕐', name: '555 定时器', desc: '无稳态/单稳态' },
+  { id: 'battery', icon: '🔋', name: '电池续航', desc: '容量与续航估算' }
 ];
 
 Page({
