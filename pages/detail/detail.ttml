@@ -27,6 +27,21 @@
     </view>
   </view>
 
+  <!-- 引脚定义 -->
+  <view class="panel" tt:if="{{pinRows.length > 0}}">
+    <view class="panel-title">引脚定义（{{chip.package}}）</view>
+    <view class="pin-head">
+      <text class="pin-no">脚位</text>
+      <text class="pin-name">名称</text>
+      <text class="pin-func">功能与复用</text>
+    </view>
+    <view class="pin-row" tt:for="{{pinRows}}" tt:key="no">
+      <text class="pin-no">{{item.no}}</text>
+      <text class="pin-name">{{item.name}}</text>
+      <text class="pin-func">{{item.func}}</text>
+    </view>
+  </view>
+
   <!-- 替代/兼容型号 -->
   <view class="panel" tt:if="{{chip.alts.length > 0}}">
     <view class="panel-title">替代 / 兼容型号</view>

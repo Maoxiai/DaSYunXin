@@ -1,4 +1,5 @@
 const util = require('../../utils/util.js');
+const pinsData = require('../../data/pins.js');
 
 // 参数表字段定义（缺失字段自动跳过）
 const PARAM_DEFS = [
@@ -18,6 +19,7 @@ Page({
   data: {
     chip: null,
     params: [],
+    pinRows: [],
     isFav: false
   },
 
@@ -35,7 +37,12 @@ Page({
       }
     }
     util.addViewHistory(chip);
-    this.setData({ chip, params, isFav: util.isFavorite(chip.id) });
+    this.setData({
+      chip,
+      params,
+      pinRows: pinsData.pins[options.id] || [],
+      isFav: util.isFavorite(chip.id)
+    });
   },
 
   toggleFavorite() {

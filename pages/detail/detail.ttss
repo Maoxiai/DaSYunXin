@@ -104,6 +104,52 @@
   word-break: break-all;
 }
 
+/* 引脚表 */
+.pin-head {
+  display: flex;
+  padding: 14rpx 0;
+  background: #f5f6fa;
+  border-radius: 10rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.pin-row {
+  display: flex;
+  align-items: baseline;
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #f2f3f7;
+}
+
+.pin-row:last-child {
+  border-bottom: none;
+}
+
+.pin-no {
+  width: 90rpx;
+  text-align: center;
+  color: #4A90E2;
+  font-weight: 600;
+  font-size: 25rpx;
+  font-family: Menlo, Consolas, monospace;
+  flex-shrink: 0;
+}
+
+.pin-name {
+  width: 180rpx;
+  font-weight: 600;
+  font-size: 25rpx;
+  font-family: Menlo, Consolas, monospace;
+  flex-shrink: 0;
+}
+
+.pin-func {
+  flex: 1;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
 /* 替代料 */
 .alt-list {
   display: flex;
