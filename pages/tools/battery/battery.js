@@ -25,28 +25,30 @@ function fmtDuration(hours) {
   return days + ' 天 ' + sig(Math.round(rest)) + ' 小时';
 }
 
+// 预设统一用 v 字段，模板绑定 {{item.v}}（与其他工具页一致）
 const BAT_PRESETS = [
-  { label: 'CR2032 纽扣 220mAh', cap: '220' },
-  { label: 'AA 碱性 2500mAh', cap: '2500' },
-  { label: '18650 锂电 3000mAh', cap: '3000' },
-  { label: '聚合物 1000mAh', cap: '1000' }
+  { label: 'CR2032 纽扣 220mAh', v: '220' },
+  { label: 'AA 碱性 2500mAh', v: '2500' },
+  { label: '18650 锂电 3000mAh', v: '3000' },
+  { label: '聚合物 1000mAh', v: '1000' }
 ];
 
 const LOAD_PRESETS = [
-  { label: '休眠 0.01mA', i: '0.01' },
-  { label: 'BLE 广播 5mA', i: '5' },
-  { label: 'WiFi 联网 80mA', i: '80' },
-  { label: '全速运行 100mA', i: '100' }
+  { label: '休眠 0.01mA', v: '0.01' },
+  { label: 'BLE 广播 5mA', v: '5' },
+  { label: 'WiFi 联网 80mA', v: '80' },
+  { label: '全速运行 100mA', v: '100' }
 ];
 
 Page({
   data: {
     cap: '3000',
-    current: '20',
+    cur: '20',
     efficiency: '100',
     voltage: '3.7',
     batPresets: BAT_PRESETS,
     loadPresets: LOAD_PRESETS,
+    hasResult: false,
     duration: '',
     durationText: '',
     whText: '',
@@ -58,24 +60,24 @@ Page({
   },
 
   onCap(e) { this.setData({ cap: e.detail.value }); this.compute(); },
-  onCurrent(e) { this.setData({ current: e.detail.value }); this.compute(); },
+  onCur(e) { this.setData({ cur: e.detail.value }); this.compute(); },
   onEff(e) { this.setData({ efficiency: e.detail.value }); this.compute(); },
   onVoltage(e) { this.setData({ voltage: e.detail.value }); this.compute(); },
 
-  setCap(e) {
-    this.setData({ cap: e.currentTarget.dataset.cap });
+  setBatPreset(e) {
+    this.setData({ cap: e.currentTarget.dataset.v });
     this.compute();
   },
 
-  setLoad(e) {
-    this.setData({ current: e.currentTarget.dataset.i });
+  setLoadPreset(e) {
+    this.setData({ cur: e.currentTarget.dataset.v });
     this.compute();
   },
 
   compute() {
-    this.setData({ duration: '', durationText: '', whText: '', error: '' });
+    this.setData({ hasResult: false, duration: '', durationText: '', whText: '', error: '' });
     const cap = parseNum(this.data.cap);       // mAh
-    const cur = parseNum(this.data.current);   // mA
+    const cur = parseNum(this.data.cur);       // mA
     const eff = this.data.efficiency.trim() ? parseNum(this.data.efficiency) : 100; // %
     const vol = this.data.voltage.trim() ? parseNum(this.data.voltage) : null;      // V，可选
 
@@ -91,12 +93,14 @@ Page({
 
     // 续航 = 容量 × 效率 / 电流
     const hours = cap * (eff / 100) / cur;
+    const whText = vol !== null
+      ? '电池能量 = ' + sig(cap * vol / 1000) + ' Wh'
+      : '';
     this.setData({
+      hasResult: true,
       duration: sig(hours),
-      durationText: fmtDuration(hours)
+      durationText: fmtDuration(hours),
+      whText
     });
-    if (vol !== null) {
-      this.setData({ whText: '电池能量 ≈ ' + sig(cap * vol / 1000) + ' Wh' });
-    }
   }
 });

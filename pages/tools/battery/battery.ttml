@@ -2,17 +2,17 @@
   <view class="card-title">电池容量（mAh）</view>
   <input class="num-input" type="digit" value="{{cap}}" bindinput="onCap" placeholder="如 3000" />
   <view class="preset-list">
-    <view class="preset" tt:for="{{batPresets}}" tt:key="label" bindtap="setCap" data-cap="{{item.cap}}">{{item.label}}</view>
+    <view class="preset" tt:for="{{batPresets}}" tt:key="label" bindtap="setBatPreset" data-v="{{item.v}}">{{item.label}}</view>
   </view>
 </view>
 
 <view class="card">
   <view class="card-title">系统平均电流（mA）</view>
-  <input class="num-input" type="digit" value="{{current}}" bindinput="onCurrent" placeholder="如 20" />
+  <input class="num-input" type="digit" value="{{cur}}" bindinput="onCur" placeholder="如 20" />
   <view class="preset-list">
-    <view class="preset" tt:for="{{loadPresets}}" tt:key="label" bindtap="setLoad" data-i="{{item.i}}">{{item.label}}</view>
+    <view class="preset" tt:for="{{loadPresets}}" tt:key="label" bindtap="setLoadPreset" data-v="{{item.v}}">{{item.label}}</view>
   </view>
-  <view class="hint">平均电流 = Σ(各状态电流 × 时间占比)，休眠为主的设备远小于峰值电流</view>
+  <view class="hint">平均电流 = 各状态电流与时间占比的加权平均，休眠为主的设备远小于峰值电流</view>
 </view>
 
 <view class="card">
@@ -29,10 +29,10 @@
 
 <view class="error-card" tt:if="{{error}}">{{error}}</view>
 
-<view class="result-card" tt:if="{{duration}}">
+<view class="result-card" tt:if="{{hasResult}}">
   <view class="rc-label">理论续航</view>
   <view class="rc-value">{{durationText}}</view>
-  <view class="rc-sub">约 {{duration}} 小时（未计自放电与截止电压损耗）</view>
+  <view class="rc-sub">约 {{duration}} 小时，未计自放电与截止电压损耗</view>
   <view class="rc-sub" tt:if="{{whText}}">{{whText}}</view>
 </view>
 
