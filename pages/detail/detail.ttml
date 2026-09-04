@@ -12,10 +12,6 @@
       <text class="badge badge-cat">{{chip.category}}</text>
     </view>
     <text class="hero-summary">{{chip.summary}}</text>
-    <view class="hero-actions">
-      <button class="btn-primary" bindtap="openManual">查看数据手册</button>
-      <button class="btn-plain" bindtap="copySearchUrl">搜索手册</button>
-    </view>
   </view>
 
   <!-- 核心参数 -->

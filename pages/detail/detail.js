@@ -52,16 +52,6 @@ Page({
     tt.showToast({ title: isFav ? '已加入收藏' : '已取消收藏', icon: 'none' });
   },
 
-  openManual() {
-    if (!this.data.chip) return;
-    util.openManual(this.data.chip);
-  },
-
-  copySearchUrl() {
-    if (!this.data.chip) return;
-    util.copyText(util.searchUrl(this.data.chip), '搜索链接已复制，请在浏览器打开');
-  },
-
   tapAlt(e) {
     const model = e.currentTarget.dataset.model;
     const chip = util.getChipByModel(model);
