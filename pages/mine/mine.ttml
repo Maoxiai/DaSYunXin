@@ -63,6 +63,6 @@
     <view class="ftag" style="animation-delay: 400ms">🧰 工具箱</view>
     <view class="ftag" style="animation-delay: 500ms">📴 离线可用</view>
   </view>
-  <view class="app-version">V1.0.0 · 芯片库持续扩充中</view>
+  <view class="app-version">V2.0.0 · 芯片库持续扩充中</view>
   <view class="feedback-btn" hover-class="feedback-hover" bindtap="copyFeedback">💬 意见反馈</view>
 </view>
