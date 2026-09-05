@@ -23,6 +23,9 @@ Page({
   onShow() {
     // 从详情页返回时刷新历史
     this.setData({ history: util.getHistory() });
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 0 });
+    }
   },
 
   // 输入框采用半受控模式：输入/粘贴时不回写 value，避免 setData 重渲染干扰粘贴；

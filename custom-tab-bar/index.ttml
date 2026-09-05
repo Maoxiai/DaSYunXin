@@ -1,0 +1,18 @@
+<view class="tab-bar">
+  <view
+    class="tab-item"
+    tt:for="{{list}}"
+    tt:key="text"
+    data-index="{{index}}"
+    data-path="{{item.pagePath}}"
+    bindtap="switchTab"
+    hover-class="tab-hover"
+    hover-stay-time="80"
+  >
+    <view class="icon-wrap {{item.sel ? 'bounce' : ''}}">
+      <image class="tab-icon" src="{{item.sel ? item.selectedIconPath : item.iconPath}}"></image>
+    </view>
+    <text class="tab-text" style="color: {{item.sel ? selectedColor : color}}">{{item.text}}</text>
+  </view>
+  <view class="indicator" style="left: {{indicatorLeft}}%"></view>
+</view>

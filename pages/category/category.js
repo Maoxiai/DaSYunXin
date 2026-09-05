@@ -14,6 +14,12 @@ Page({
     });
   },
 
+  onShow() {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 1 });
+    }
+  },
+
   switchTab(e) {
     this.setData({ activeTab: e.currentTarget.dataset.tab });
   },
