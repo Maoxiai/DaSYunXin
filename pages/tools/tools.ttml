@@ -1,14 +1,18 @@
-<view class="tool-grid">
-  <view
-    class="tool-item"
-    tt:for="{{tools}}"
-    tt:key="id"
-    bindtap="openTool"
-    data-id="{{item.id}}"
-  >
-    <text class="tool-icon">{{item.icon}}</text>
-    <text class="tool-name">{{item.name}}</text>
-    <text class="tool-desc">{{item.desc}}</text>
+<view class="cat-block" tt:for="{{categories}}" tt:for-item="cat" tt:key="name">
+  <view class="cat-title">{{cat.name}}</view>
+  <view class="tool-grid">
+    <view
+      class="tool-item"
+      tt:for="{{cat.tools}}"
+      tt:for-item="tool"
+      tt:key="id"
+      bindtap="openTool"
+      data-id="{{tool.id}}"
+    >
+      <text class="tool-icon">{{tool.icon}}</text>
+      <text class="tool-name">{{tool.name}}</text>
+      <text class="tool-desc">{{tool.desc}}</text>
+    </view>
   </view>
 </view>
 <view class="foot-tip">全部工具离线可用</view>

@@ -1,0 +1,53 @@
+<view class="card">
+  <view class="card-title">定时器时钟频率（MHz）</view>
+  <input class="field-input" type="digit" value="{{clock}}" bindinput="onClock" placeholder="如 72" />
+  <view class="preset-list">
+    <view class="preset" tt:for="{{clockPresets}}" tt:key="*this" bindtap="setClock" data-v="{{item}}">{{item}}</view>
+  </view>
+</view>
+
+<view class="card">
+  <view class="card-title">PWM 参数</view>
+  <view class="field-row">
+    <text class="field-label">预分频 PSC</text>
+    <input class="field-input" type="number" value="{{psc}}" bindinput="onPsc" placeholder="0" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">重装值 ARR（TOP）</text>
+    <input class="field-input" type="number" value="{{arr}}" bindinput="onArr" placeholder="0" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">占空比（%）</text>
+    <input class="field-input" type="digit" value="{{duty}}" bindinput="onDuty" placeholder="50" />
+  </view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{freq}}">
+  <view class="out-row">
+    <text class="out-label">PWM 频率</text>
+    <text class="out-value">{{freq}}</text>
+  </view>
+  <view class="out-row">
+    <text class="out-label">PWM 分辨率</text>
+    <text class="out-value">{{resolution}}</text>
+  </view>
+  <view class="out-row">
+    <text class="out-label">占空比步进</text>
+    <text class="out-value">{{step}}</text>
+  </view>
+  <view class="out-row">
+    <text class="out-label">CCR 比较值</text>
+    <text class="out-value">{{ccr}}</text>
+  </view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">f = f_clk / ((PSC+1) × (ARR+1))</view>
+  <view class="formula">分辨率 = log2(ARR+1) bit</view>
+  <view class="formula">CCR = 占空比 × (ARR+1) / 100</view>
+</view>
+
+<view class="foot-tip">边沿对齐模式；中心对齐频率减半、分辨率更高</view>

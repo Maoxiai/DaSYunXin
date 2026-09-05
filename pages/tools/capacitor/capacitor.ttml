@@ -1,0 +1,42 @@
+<view class="seg-bar">
+  <view class="seg {{mode === 'parallel' ? 'active' : ''}}" bindtap="setMode" data-mode="parallel">并联</view>
+  <view class="seg {{mode === 'series' ? 'active' : ''}}" bindtap="setMode" data-mode="series">串联</view>
+</view>
+
+<view class="card">
+  <view class="card-title">电容参数</view>
+  <view class="field-row">
+    <text class="field-label">C1</text>
+    <input class="field-input cap-input" type="digit" value="{{c1}}" bindinput="onC1" placeholder="如 10" />
+    <view class="seg-bar unit-bar">
+      <view class="seg {{c1unit === 'pf' ? 'active' : ''}}" bindtap="setC1Unit" data-unit="pf">pF</view>
+      <view class="seg {{c1unit === 'nf' ? 'active' : ''}}" bindtap="setC1Unit" data-unit="nf">nF</view>
+      <view class="seg {{c1unit === 'uf' ? 'active' : ''}}" bindtap="setC1Unit" data-unit="uf">μF</view>
+    </view>
+  </view>
+  <view class="field-row">
+    <text class="field-label">C2</text>
+    <input class="field-input cap-input" type="digit" value="{{c2}}" bindinput="onC2" placeholder="如 10" />
+    <view class="seg-bar unit-bar">
+      <view class="seg {{c2unit === 'pf' ? 'active' : ''}}" bindtap="setC2Unit" data-unit="pf">pF</view>
+      <view class="seg {{c2unit === 'nf' ? 'active' : ''}}" bindtap="setC2Unit" data-unit="nf">nF</view>
+      <view class="seg {{c2unit === 'uf' ? 'active' : ''}}" bindtap="setC2Unit" data-unit="uf">μF</view>
+    </view>
+  </view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{result}}">
+  <view class="rc-label">总电容</view>
+  <view class="rc-value">{{result}}</view>
+  <view class="rc-sub" tt:if="{{detail}}">{{detail}}</view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">并联：C = C1 + C2</view>
+  <view class="formula">串联：C = C1 × C2 / (C1 + C2)</view>
+</view>
+
+<view class="foot-tip">电容串并联与电阻相反：并联增大、串联减小</view>

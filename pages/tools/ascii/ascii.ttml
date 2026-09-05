@@ -1,0 +1,27 @@
+<view class="search-box">
+  <view class="input-wrap">
+    <input class="search-input" value="{{keyword}}" bindinput="onInput" placeholder="搜索字符或码值，如 A / 65 / 41" />
+    <view class="clear-btn" tt:if="{{hasInput}}" bindtap="clearInput">✕</view>
+  </view>
+</view>
+
+<view class="panel" tt:if="{{count > 0}}">
+  <view class="panel-title">可打印字符（{{count}} 个）</view>
+  <view class="ascii-row" tt:for="{{rows}}" tt:key="dec">
+    <text class="a-dec">{{item.dec}}</text>
+    <text class="a-hex">0x{{item.hex}}</text>
+    <text class="a-char">{{item.char}}</text>
+  </view>
+</view>
+
+<view class="empty-tip" tt:if="{{count === 0}}">未找到匹配的字符</view>
+
+<view class="panel">
+  <view class="panel-title">常用控制字符</view>
+  <view class="ctrl-row" tt:for="{{ctrlRows}}" tt:key="dec">
+    <text class="c-name">{{item.char}}</text>
+    <text class="c-code">Dec {{item.dec}} · Hex 0x{{item.hex}}</text>
+  </view>
+</view>
+
+<view class="foot-tip">共 95 个可打印字符，覆盖英文字母、数字与符号</view>

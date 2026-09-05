@@ -1,0 +1,32 @@
+<view class="card">
+  <view class="card-title">数值</view>
+  <input class="num-input" type="digit" value="{{value}}" bindinput="onValue" placeholder="如 1" />
+  <view class="seg-bar">
+    <view class="seg {{unit === 'bit' ? 'active' : ''}}" bindtap="setUnit" data-unit="bit">bit</view>
+    <view class="seg {{unit === 'B' ? 'active' : ''}}" bindtap="setUnit" data-unit="B">B</view>
+    <view class="seg {{unit === 'KB' ? 'active' : ''}}" bindtap="setUnit" data-unit="KB">KB</view>
+    <view class="seg {{unit === 'MB' ? 'active' : ''}}" bindtap="setUnit" data-unit="MB">MB</view>
+    <view class="seg {{unit === 'GB' ? 'active' : ''}}" bindtap="setUnit" data-unit="GB">GB</view>
+    <view class="seg {{unit === 'TB' ? 'active' : ''}}" bindtap="setUnit" data-unit="TB">TB</view>
+  </view>
+</view>
+
+<view class="card">
+  <view class="card-title">换算进制</view>
+  <view class="seg-bar">
+    <view class="seg {{base === '1024' ? 'active' : ''}}" bindtap="setBase" data-base="1024">二进制 1024</view>
+    <view class="seg {{base === '1000' ? 'active' : ''}}" bindtap="setBase" data-base="1000">十进制 1000</view>
+  </view>
+  <view class="hint">操作系统按 1024 计算，硬盘厂商按 1000 标称</view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{outputs.length > 0}}">
+  <view class="out-row" tt:for="{{outputs}}" tt:key="label">
+    <text class="out-label">{{item.label}}</text>
+    <text class="out-value">{{item.value}}</text>
+  </view>
+</view>
+
+<view class="foot-tip">1 Byte = 8 bit，1 KB = 1024（或 1000）Byte</view>

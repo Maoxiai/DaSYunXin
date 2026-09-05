@@ -1,0 +1,39 @@
+<view class="card">
+  <view class="card-title">IP 地址</view>
+  <input class="field-input" type="text" value="{{ip}}" bindinput="onIp" placeholder="192.168.1.100" />
+</view>
+
+<view class="card">
+  <view class="card-title">CIDR 前缀（/n）</view>
+  <input class="field-input" type="number" value="{{prefix}}" bindinput="onPrefix" placeholder="24" />
+  <view class="preset-list">
+    <view class="preset" tt:for="{{prefixPresets}}" tt:key="*this" bindtap="setPrefix" data-v="{{item}}">/{{item}}</view>
+  </view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{mask}}">
+  <view class="out-row">
+    <text class="out-label">子网掩码</text>
+    <text class="out-value">{{mask}}</text>
+  </view>
+  <view class="out-row">
+    <text class="out-label">网络地址</text>
+    <text class="out-value">{{network}}</text>
+  </view>
+  <view class="out-row">
+    <text class="out-label">广播地址</text>
+    <text class="out-value">{{broadcast}}</text>
+  </view>
+  <view class="out-row">
+    <text class="out-label">可用主机数</text>
+    <text class="out-value">{{hosts}}</text>
+  </view>
+  <view class="out-row">
+    <text class="out-label">可用 IP 范围</text>
+    <text class="out-value">{{range}}</text>
+  </view>
+</view>
+
+<view class="foot-tip">主机数已扣除网络地址与广播地址（/31 /32 除外）</view>

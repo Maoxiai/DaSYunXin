@@ -1,0 +1,36 @@
+<view class="card">
+  <view class="card-title">输入电阻值（留空忽略）</view>
+  <view class="field-row">
+    <text class="field-label">R1</text>
+    <input class="field-input" type="digit" value="{{r1}}" bindinput="onR1" placeholder="如 4.7k" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">R2</text>
+    <input class="field-input" type="digit" value="{{r2}}" bindinput="onR2" placeholder="如 4.7k" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">R3</text>
+    <input class="field-input" type="digit" value="{{r3}}" bindinput="onR3" placeholder="可空" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">R4</text>
+    <input class="field-input" type="digit" value="{{r4}}" bindinput="onR4" placeholder="可空" />
+  </view>
+  <view class="hint">电阻支持简写：470 = 470Ω，4.7k = 4.7kΩ，1M = 1MΩ</view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{result}}">
+  <view class="rc-label">并联总阻值</view>
+  <view class="rc-value">{{result}}</view>
+  <view class="rc-sub" tt:if="{{detail}}">{{detail}}</view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">1/R = 1/R1 + 1/R2 + ... + 1/Rn</view>
+  <view class="formula">两电阻：R = R1 × R2 / (R1 + R2)</view>
+</view>
+
+<view class="foot-tip">并联后总阻值小于任一支路，多路均流常用</view>

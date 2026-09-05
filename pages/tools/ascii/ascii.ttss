@@ -1,0 +1,115 @@
+.search-box {
+  padding: 20rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  height: 72rpx;
+  border: 2rpx solid #e5e8ef;
+  padding: 0 64rpx 0 28rpx;
+  border-radius: 36rpx;
+  background: #f5f6fa;
+  font-size: 28rpx;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 20rpx;
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  border-radius: 50%;
+  background: #d4d8e0;
+  color: #fff;
+  font-size: 22rpx;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 20rpx;
+  padding: 20rpx 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.panel-title {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.ascii-row {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 0;
+  border-bottom: 1rpx solid #f2f3f7;
+}
+
+.ascii-row:last-child {
+  border-bottom: none;
+}
+
+.a-dec {
+  width: 120rpx;
+  color: #999;
+  font-size: 24rpx;
+  font-family: Menlo, Consolas, monospace;
+}
+
+.a-hex {
+  width: 120rpx;
+  color: #4A90E2;
+  font-size: 24rpx;
+  font-family: Menlo, Consolas, monospace;
+}
+
+.a-char {
+  flex: 1;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.ctrl-row {
+  display: flex;
+  align-items: center;
+  padding: 10rpx 0;
+}
+
+.c-name {
+  width: 140rpx;
+  font-size: 24rpx;
+  font-family: Menlo, Consolas, monospace;
+  font-weight: 600;
+}
+
+.c-code {
+  flex: 1;
+  color: #999;
+  font-size: 22rpx;
+  font-family: Menlo, Consolas, monospace;
+}
+
+.empty-tip {
+  padding: 40rpx 0;
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.foot-tip {
+  text-align: center;
+  color: #b8bdc9;
+  font-size: 22rpx;
+  padding: 10rpx 0 50rpx;
+}

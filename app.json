@@ -17,7 +17,15 @@
     "pages/tools/rc/rc",
     "pages/tools/adc/adc",
     "pages/tools/ne555/ne555",
-    "pages/tools/battery/battery"
+    "pages/tools/battery/battery",
+    "pages/tools/parallel/parallel",
+    "pages/tools/capacitor/capacitor",
+    "pages/tools/pwm/pwm",
+    "pages/tools/crc/crc",
+    "pages/tools/pullup/pullup",
+    "pages/tools/ipcalc/ipcalc",
+    "pages/tools/ascii/ascii",
+    "pages/tools/datasize/datasize"
   ],
   "window": {
     "backgroundTextStyle": "light",

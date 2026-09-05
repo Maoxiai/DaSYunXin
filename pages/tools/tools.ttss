@@ -1,7 +1,18 @@
+.cat-block {
+  margin-bottom: 8rpx;
+}
+
+.cat-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  padding: 24rpx 24rpx 8rpx;
+}
+
 .tool-grid {
   display: flex;
   flex-wrap: wrap;
-  padding: 20rpx 12rpx;
+  padding: 12rpx 12rpx 20rpx;
 }
 
 .tool-item {

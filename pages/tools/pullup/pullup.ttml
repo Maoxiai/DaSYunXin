@@ -1,0 +1,47 @@
+<view class="card">
+  <view class="card-title">I2C 参数</view>
+  <view class="field-row">
+    <text class="field-label">电源电压 VDD（V）</text>
+    <input class="field-input" type="digit" value="{{vdd}}" bindinput="onVdd" placeholder="如 3.3" />
+  </view>
+  <view class="field-row">
+    <text class="field-label">总线电容 Cbus</text>
+    <input class="field-input cap-input" type="digit" value="{{cap}}" bindinput="onCap" placeholder="100" />
+    <view class="seg-bar unit-bar">
+      <view class="seg {{capUnit === 'pf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="pf">pF</view>
+      <view class="seg {{capUnit === 'nf' ? 'active' : ''}}" bindtap="setCapUnit" data-unit="nf">nF</view>
+    </view>
+  </view>
+  <view class="field-row">
+    <text class="field-label">通信速率</text>
+    <view class="seg-bar speed-bar">
+      <view class="seg {{speed === 'standard' ? 'active' : ''}}" bindtap="setSpeed" data-speed="standard">标准 100k</view>
+      <view class="seg {{speed === 'fast' ? 'active' : ''}}" bindtap="setSpeed" data-speed="fast">快速 400k</view>
+    </view>
+  </view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{rpMin}}">
+  <view class="out-row">
+    <text class="out-label">最小上拉 Rp(min)</text>
+    <text class="out-value">{{rpMin}}</text>
+  </view>
+  <view class="out-row">
+    <text class="out-label">最大上拉 Rp(max)</text>
+    <text class="out-value">{{rpMax}}</text>
+  </view>
+  <view class="out-row recommend-row" tt:if="{{recommend}}">
+    <text class="out-label">推荐取值</text>
+    <text class="out-value">{{recommend}}</text>
+  </view>
+</view>
+
+<view class="formula-card">
+  <view class="card-title">公式</view>
+  <view class="formula">Rp(min) = (VDD − 0.4) / 3mA</view>
+  <view class="formula">Rp(max) = tr / (0.8473 × Cbus)</view>
+</view>
+
+<view class="foot-tip">典型 100pF 总线：3.3V 快速模式推荐 2.2k，标准模式推荐 4.7k</view>

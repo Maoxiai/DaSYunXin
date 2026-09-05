@@ -1,0 +1,21 @@
+<view class="seg-bar">
+  <view class="seg {{crcType === 'crc8' ? 'active' : ''}}" bindtap="setType" data-type="crc8">CRC8</view>
+  <view class="seg {{crcType === 'crc16' ? 'active' : ''}}" bindtap="setType" data-type="crc16">CRC16</view>
+  <view class="seg {{crcType === 'crc32' ? 'active' : ''}}" bindtap="setType" data-type="crc32">CRC32</view>
+</view>
+
+<view class="card">
+  <view class="card-title">输入数据（十六进制）</view>
+  <textarea class="hex-input" value="{{input}}" bindinput="onInput" placeholder="如 01 03 00 00 00 01" />
+  <view class="hint">支持空格分隔或连续十六进制，如 0103 或 01 03</view>
+</view>
+
+<view class="error-card" tt:if="{{error}}">{{error}}</view>
+
+<view class="result-card" tt:if="{{result}}">
+  <view class="rc-label">校验结果</view>
+  <view class="rc-value">{{result}}</view>
+  <view class="rc-sub" tt:if="{{resultDetail}}">{{resultDetail}}</view>
+</view>
+
+<view class="foot-tip">CRC16-Modbus 常用于 RS-485 通信帧校验</view>
