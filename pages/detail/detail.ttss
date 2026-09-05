@@ -28,6 +28,14 @@
   background: rgba(255, 255, 255, 0.25);
   border-color: #ffd04d;
   color: #ffd04d;
+  animation: favPop 0.45s ease both;
+}
+
+@keyframes favPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.28); }
+  70% { transform: scale(0.92); }
+  100% { transform: scale(1); }
 }
 
 .hero-badges {

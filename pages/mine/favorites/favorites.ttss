@@ -134,6 +134,12 @@
 .empty-icon {
   font-size: 72rpx;
   margin-bottom: 24rpx;
+  animation: floaty 2.6s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16rpx); }
 }
 
 .empty-text {

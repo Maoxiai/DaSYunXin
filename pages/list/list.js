@@ -22,7 +22,10 @@ Page({
     tt.setNavigationBarTitle({ title: value });
     this.setData({
       title: value,
-      chips: chips.map((c) => Object.assign({}, c, { spec: util.specLine(c) }))
+      chips: chips.map((c, i) => Object.assign({}, c, {
+        spec: util.specLine(c),
+        _delay: Math.min(i, 12) * 40
+      }))
     });
   },
 

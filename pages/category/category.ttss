@@ -34,6 +34,18 @@
   height: 6rpx;
   border-radius: 3rpx;
   background: #4A90E2;
+  animation: underlineIn 0.3s ease both;
+}
+
+@keyframes underlineIn {
+  from {
+    transform: translateX(-50%) scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 1;
+  }
 }
 
 .grid {
