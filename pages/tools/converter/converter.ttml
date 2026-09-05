@@ -27,7 +27,7 @@
 </view>
 
 <!-- 输出 -->
-<view class="card" tt:if="{{outputs.length > 0}}">
+<view class="card result-pop" tt:if="{{outputs.length > 0}}">
   <view class="card-title">转换结果（点击复制）</view>
   <view class="out-row" tt:for="{{outputs}}" tt:key="key" bindtap="copyRow" data-value="{{item.value}}">
     <text class="out-label">{{item.label}}</text>

@@ -36,3 +36,21 @@ page {
   font-weight: bold;
   margin-bottom: 16rpx;
 }
+
+/* 工具结果卡片弹出动画（全局，覆盖所有工具页） */
+.result-card,
+.mini-result,
+.result-pop {
+  animation: resultPop 0.45s ease both;
+}
+
+@keyframes resultPop {
+  from {
+    opacity: 0;
+    transform: translateY(18rpx) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
