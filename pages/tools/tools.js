@@ -42,12 +42,6 @@ Page({
     categories
   },
 
-  onShow() {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({ selected: 2 });
-    }
-  },
-
   openTool(e) {
     tt.navigateTo({
       url: '/pages/tools/' + e.currentTarget.dataset.id + '/' + e.currentTarget.dataset.id
