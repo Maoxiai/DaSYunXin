@@ -101,6 +101,18 @@
   }
 }
 
+/* 删除滑出 */
+.list-item.removing {
+  animation: slideOutRight 0.26s ease forwards;
+}
+
+@keyframes slideOutRight {
+  to {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+}
+
 .item-main {
   flex: 1;
   display: flex;

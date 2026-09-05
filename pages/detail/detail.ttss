@@ -182,3 +182,19 @@
     transform: translateY(0);
   }
 }
+
+/* 徽章逐个弹入 */
+.anim-badge {
+  animation: badgePop 0.45s ease both;
+}
+
+@keyframes badgePop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

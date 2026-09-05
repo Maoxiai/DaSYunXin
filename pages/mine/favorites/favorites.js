@@ -68,8 +68,15 @@ Page({
   },
 
   removeFav(e) {
-    util.removeFavoriteById(e.currentTarget.dataset.id);
-    this.refresh();
-    tt.showToast({ title: '已取消收藏', icon: 'none' });
+    const id = e.currentTarget.dataset.id;
+    // 先标记该行滑出，动画结束后再真正删除
+    this.setData({
+      list: this.data.list.map((f) => Object.assign({}, f, { _removing: f.id === id }))
+    });
+    setTimeout(() => {
+      util.removeFavoriteById(id);
+      this.refresh();
+      tt.showToast({ title: '已取消收藏', icon: 'none' });
+    }, 260);
   }
 });

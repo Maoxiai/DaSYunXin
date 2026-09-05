@@ -25,7 +25,7 @@
 <!-- 列表 -->
 <view class="list-area">
   <block tt:if="{{list.length > 0}}">
-    <view class="list-item anim" tt:for="{{list}}" tt:key="id" style="animation-delay: {{item._delay}}ms">
+    <view class="list-item anim {{item._removing ? 'removing' : ''}}" tt:for="{{list}}" tt:key="id" style="animation-delay: {{item._delay}}ms">
       <view class="item-main" bindtap="openDetail" data-id="{{item.id}}">
         <text class="item-model">{{item.model}}</text>
         <text class="item-sub">{{item.vendor}} · {{item.category}}</text>

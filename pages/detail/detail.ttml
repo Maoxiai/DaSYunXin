@@ -8,8 +8,8 @@
       </view>
     </view>
     <view class="hero-badges">
-      <text class="badge">{{chip.vendor}}</text>
-      <text class="badge badge-cat">{{chip.category}}</text>
+      <text class="badge anim-badge" style="animation-delay: 120ms">{{chip.vendor}}</text>
+      <text class="badge badge-cat anim-badge" style="animation-delay: 180ms">{{chip.category}}</text>
     </view>
     <text class="hero-summary">{{chip.summary}}</text>
   </view>
