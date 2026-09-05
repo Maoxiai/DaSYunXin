@@ -50,10 +50,19 @@
 </view>
 
 <!-- 关于 -->
-<view class="panel">
-  <view class="panel-title">关于 猫夏云芯</view>
-  <view class="about-text">猫夏云芯 —— 嵌入式开发者的芯片手册速查与工具箱。</view>
-  <view class="about-text">芯片搜索 · 参数速览 · 替代料推荐 · 嵌入式常用工具，全部离线可用。</view>
-  <view class="about-text">V1.0.0 · 芯片库持续扩充中</view>
-  <view class="about-feedback" bindtap="copyFeedback">意见反馈：点击复制邮箱 2312891301@qq.com</view>
+<view class="about-card">
+  <view class="logo-wrap">
+    <view class="logo-halo"></view>
+    <view class="logo">⚡</view>
+  </view>
+  <text class="app-name">猫夏云芯</text>
+  <text class="app-slogan">嵌入式开发者的芯片速查与工具箱</text>
+  <view class="feature-tags">
+    <view class="ftag" style="animation-delay: 200ms">🔍 芯片速查</view>
+    <view class="ftag" style="animation-delay: 300ms">📊 参数速览</view>
+    <view class="ftag" style="animation-delay: 400ms">🧰 工具箱</view>
+    <view class="ftag" style="animation-delay: 500ms">📴 离线可用</view>
+  </view>
+  <view class="app-version">V1.0.0 · 芯片库持续扩充中</view>
+  <view class="feedback-btn" hover-class="feedback-hover" bindtap="copyFeedback">💬 意见反馈</view>
 </view>
