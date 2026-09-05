@@ -2,6 +2,92 @@
 // 按芯片 id 索引；数据来源为厂商数据手册，仅收录引脚定义明确的高频型号
 // 字段：no 引脚号 / name 引脚名称 / func 功能与主要复用
 
+// ============ ESP32 系列开发板 GPIO 速查 ============
+// ESP32 为模组，无传统物理引脚号，故按开发板 GPIO 编号录最常用复用功能
+
+// 经典 ESP32（WROOM-32 / WROOM-32D / WROVER-B）GPIO 复用一致，共享此表
+const esp32Gpio = [
+  { no: 'EN', name: 'EN', func: '使能/复位，低电平复位（开发板自带 RC 电路）' },
+  { no: 'GPIO0', name: 'GPIO0', func: 'Boot 选择：上拉=正常运行，下拉=下载模式' },
+  { no: 'GPIO1', name: 'GPIO1', func: 'UART0 TX，默认烧录/日志输出' },
+  { no: 'GPIO2', name: 'GPIO2', func: 'Boot 相关（内部下拉），板载 LED 常用' },
+  { no: 'GPIO3', name: 'GPIO3', func: 'UART0 RX，默认烧录/日志输入' },
+  { no: 'GPIO4', name: 'GPIO4', func: '通用 GPIO，ADC2_CH0' },
+  { no: 'GPIO5', name: 'GPIO5', func: 'VSPI CS，默认 SPI 片选' },
+  { no: 'GPIO12', name: 'GPIO12', func: 'MTDI（内部下拉），上电电平异常会致启动失败' },
+  { no: 'GPIO13', name: 'GPIO13', func: '通用 GPIO，ADC2_CH4' },
+  { no: 'GPIO14', name: 'GPIO14', func: '通用 GPIO，ADC2_CH6' },
+  { no: 'GPIO15', name: 'GPIO15', func: 'MTDO，上电电平异常会致启动失败' },
+  { no: 'GPIO16', name: 'GPIO16', func: 'UART2 RX' },
+  { no: 'GPIO17', name: 'GPIO17', func: 'UART2 TX' },
+  { no: 'GPIO18', name: 'GPIO18', func: 'VSPI SCK，默认 SPI 时钟' },
+  { no: 'GPIO19', name: 'GPIO19', func: 'VSPI MISO，默认 SPI' },
+  { no: 'GPIO21', name: 'GPIO21', func: 'I2C SDA（默认）' },
+  { no: 'GPIO22', name: 'GPIO22', func: 'I2C SCL（默认）' },
+  { no: 'GPIO23', name: 'GPIO23', func: 'VSPI MOSI，默认 SPI' },
+  { no: 'GPIO25', name: 'GPIO25', func: 'DAC1 输出 / ADC2_CH8' },
+  { no: 'GPIO26', name: 'GPIO26', func: 'DAC2 输出 / ADC2_CH9' },
+  { no: 'GPIO32', name: 'GPIO32', func: 'ADC1_CH4，支持触摸' },
+  { no: 'GPIO33', name: 'GPIO33', func: 'ADC1_CH5，支持触摸' },
+  { no: 'GPIO34', name: 'GPIO34', func: '仅输入，ADC1_CH6，无内部上拉' },
+  { no: 'GPIO35', name: 'GPIO35', func: '仅输入，ADC1_CH7，无内部上拉' },
+  { no: 'GPIO36', name: 'GPIO36', func: '仅输入，ADC1_CH0（SENSOR_VP）' },
+  { no: 'GPIO39', name: 'GPIO39', func: '仅输入，ADC1_CH3（SENSOR_VN）' }
+];
+
+// ESP32-S3 核心 GPIO
+const esp32S3Gpio = [
+  { no: 'GPIO0', name: 'GPIO0', func: 'Boot 模式选择（strapping，内部上拉）' },
+  { no: 'GPIO3', name: 'GPIO3', func: 'JTAG TMS' },
+  { no: 'GPIO4', name: 'GPIO4', func: 'JTAG TCK' },
+  { no: 'GPIO5', name: 'GPIO5', func: 'JTAG TDI' },
+  { no: 'GPIO6', name: 'GPIO6', func: 'JTAG TDO' },
+  { no: 'GPIO19', name: 'GPIO19', func: 'USB D-（原生 USB）' },
+  { no: 'GPIO20', name: 'GPIO20', func: 'USB D+（原生 USB）' },
+  { no: 'GPIO43', name: 'GPIO43', func: 'UART0 TX，默认串口' },
+  { no: 'GPIO44', name: 'GPIO44', func: 'UART0 RX，默认串口' },
+  { no: 'GPIO45', name: 'GPIO45', func: 'Boot 模式选择（strapping）' },
+  { no: 'GPIO46', name: 'GPIO46', func: 'Boot 模式选择（strapping）' }
+];
+
+// ESP32-S2 核心 GPIO
+const esp32S2Gpio = [
+  { no: 'GPIO0', name: 'GPIO0', func: 'Boot 模式选择（strapping）' },
+  { no: 'GPIO19', name: 'GPIO19', func: 'USB D-（原生 USB）' },
+  { no: 'GPIO20', name: 'GPIO20', func: 'USB D+（原生 USB）' },
+  { no: 'GPIO43', name: 'GPIO43', func: 'UART0 TX，默认串口' },
+  { no: 'GPIO44', name: 'GPIO44', func: 'UART0 RX，默认串口' },
+  { no: 'GPIO45', name: 'GPIO45', func: 'Boot 模式选择（strapping）' },
+  { no: 'GPIO46', name: 'GPIO46', func: 'Boot 模式选择（strapping）' }
+];
+
+// ESP32-C3 核心 GPIO
+const esp32C3Gpio = [
+  { no: 'GPIO0', name: 'GPIO0', func: 'ADC1_CH0，通用 GPIO' },
+  { no: 'GPIO1', name: 'GPIO1', func: 'ADC1_CH1，通用 GPIO' },
+  { no: 'GPIO2', name: 'GPIO2', func: 'Boot 选择（strapping，内部上拉）' },
+  { no: 'GPIO3', name: 'GPIO3', func: 'ADC1_CH3，通用 GPIO' },
+  { no: 'GPIO4', name: 'GPIO4', func: 'ADC1_CH4，通用 GPIO' },
+  { no: 'GPIO5', name: 'GPIO5', func: 'ADC1_CH5 / JTAG TMS' },
+  { no: 'GPIO8', name: 'GPIO8', func: 'Boot 选择（strapping，内部上拉），板载 LED 常用' },
+  { no: 'GPIO9', name: 'GPIO9', func: 'Boot 选择（strapping，内部上拉）' },
+  { no: 'GPIO18', name: 'GPIO18', func: 'USB D-（原生 USB）' },
+  { no: 'GPIO19', name: 'GPIO19', func: 'USB D+（原生 USB）' },
+  { no: 'GPIO20', name: 'GPIO20', func: 'UART0 RX，默认串口' },
+  { no: 'GPIO21', name: 'GPIO21', func: 'UART0 TX，默认串口' }
+];
+
+// ESP32-C6 核心 GPIO
+const esp32C6Gpio = [
+  { no: 'GPIO8', name: 'GPIO8', func: 'Boot 选择（strapping）' },
+  { no: 'GPIO9', name: 'GPIO9', func: 'Boot 选择（strapping）' },
+  { no: 'GPIO12', name: 'GPIO12', func: 'USB D-（原生 USB）' },
+  { no: 'GPIO13', name: 'GPIO13', func: 'USB D+（原生 USB）' },
+  { no: 'GPIO15', name: 'GPIO15', func: 'Boot 选择（strapping）' },
+  { no: 'GPIO16', name: 'GPIO16', func: 'UART0 RX，默认串口' },
+  { no: 'GPIO17', name: 'GPIO17', func: 'UART0 TX，默认串口' }
+];
+
 const pins = {
   // ============ MCU ============
   'stm32f103c8t6': [
@@ -337,7 +423,16 @@ const pins = {
     { no: '6', name: 'XCL', func: '辅助 I2C 时钟' },
     { no: '7', name: 'AD0', func: '地址选择：0x68（低）/ 0x69（高）' },
     { no: '8', name: 'INT', func: '中断输出，姿态数据就绪' }
-  ]
+  ],
+
+  // ============ ESP32 系列 ============
+  'esp32-wroom-32': esp32Gpio,
+  'esp32-wroom-32d': esp32Gpio,
+  'esp32-wrover-b': esp32Gpio,
+  'esp32-s3-wroom-1': esp32S3Gpio,
+  'esp32-s2': esp32S2Gpio,
+  'esp32-c3': esp32C3Gpio,
+  'esp32-c6': esp32C6Gpio
 };
 
 module.exports = { pins };
