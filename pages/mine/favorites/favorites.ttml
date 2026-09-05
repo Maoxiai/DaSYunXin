@@ -1,0 +1,40 @@
+<!-- 统计条 -->
+<view class="count-bar">
+  <text class="count-text">共收藏 <text class="count-num">{{total}}</text> 款芯片</text>
+</view>
+
+<!-- 搜索框 -->
+<view class="search-box">
+  <view class="input-wrap">
+    <input class="search-input" value="{{keyword}}" bindinput="onInput" placeholder="搜索型号或厂商" />
+    <view class="clear-btn" tt:if="{{hasInput}}" bindtap="clearInput">✕</view>
+  </view>
+</view>
+
+<!-- 厂商筛选 -->
+<view class="chip-bar" tt:if="{{vendors.length > 0}}">
+  <view
+    class="chip {{item.sel ? 'active' : ''}}"
+    tt:for="{{vendors}}"
+    tt:key="name"
+    bindtap="setVendor"
+    data-v="{{item.name}}"
+  >{{item.label}} {{item.count}}</view>
+</view>
+
+<!-- 列表 -->
+<view class="list-area">
+  <block tt:if="{{list.length > 0}}">
+    <view class="list-item anim" tt:for="{{list}}" tt:key="id" style="animation-delay: {{item._delay}}ms">
+      <view class="item-main" bindtap="openDetail" data-id="{{item.id}}">
+        <text class="item-model">{{item.model}}</text>
+        <text class="item-sub">{{item.vendor}} · {{item.category}}</text>
+      </view>
+      <text class="item-del" catchtap="removeFav" data-id="{{item.id}}">✕</text>
+    </view>
+  </block>
+  <view class="empty" tt:else>
+    <text class="empty-icon">🔍</text>
+    <text class="empty-text">{{total > 0 ? '无匹配结果' : '暂无收藏'}}</text>
+  </view>
+</view>

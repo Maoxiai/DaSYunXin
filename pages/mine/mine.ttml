@@ -1,10 +1,24 @@
-<!-- 收藏 -->
+<!-- 数据统计卡片 -->
+<view class="stats-card">
+  <view class="stat-item" bindtap="goFavorites">
+    <text class="stat-num">{{favCount}}</text>
+    <text class="stat-label">我的收藏</text>
+  </view>
+  <view class="stat-divider"></view>
+  <view class="stat-item" bindtap="goHistory">
+    <text class="stat-num">{{viewCount}}</text>
+    <text class="stat-label">浏览历史</text>
+  </view>
+</view>
+
+<!-- 收藏预览 -->
 <view class="panel">
   <view class="panel-header">
-    <text class="panel-title">我的收藏（{{favorites.length}}）</text>
+    <text class="panel-title">我的收藏</text>
+    <text class="link-btn" tt:if="{{favCount > 0}}" bindtap="goFavorites">查看全部 {{favCount}} 条 ›</text>
   </view>
-  <block tt:if="{{favorites.length > 0}}">
-    <view class="list-row" tt:for="{{favorites}}" tt:key="id">
+  <block tt:if="{{favPreview.length > 0}}">
+    <view class="list-row anim" tt:for="{{favPreview}}" tt:key="id" style="animation-delay: {{item._delay}}ms">
       <view class="row-main" bindtap="openDetail" data-id="{{item.id}}">
         <text class="row-model">{{item.model}}</text>
         <text class="row-sub">{{item.vendor}} · {{item.category}}</text>
@@ -15,14 +29,17 @@
   <view class="empty-tip" tt:else>暂无收藏，去首页看看热门芯片吧</view>
 </view>
 
-<!-- 浏览历史 -->
+<!-- 浏览历史预览 -->
 <view class="panel">
   <view class="panel-header">
-    <text class="panel-title">浏览历史（{{views.length}}）</text>
-    <text class="link-btn" tt:if="{{views.length > 0}}" bindtap="clearViews">清空</text>
+    <text class="panel-title">浏览历史</text>
+    <view class="header-actions">
+      <text class="link-btn" tt:if="{{viewCount > 0}}" bindtap="clearViews">清空</text>
+      <text class="link-btn" tt:if="{{viewCount > 0}}" bindtap="goHistory">全部 {{viewCount}} ›</text>
+    </view>
   </view>
-  <block tt:if="{{views.length > 0}}">
-    <view class="list-row" tt:for="{{views}}" tt:key="id">
+  <block tt:if="{{viewPreview.length > 0}}">
+    <view class="list-row anim" tt:for="{{viewPreview}}" tt:key="id" style="animation-delay: {{item._delay}}ms">
       <view class="row-main" bindtap="openDetail" data-id="{{item.id}}">
         <text class="row-model">{{item.model}}</text>
         <text class="row-sub">{{item.vendor}}</text>

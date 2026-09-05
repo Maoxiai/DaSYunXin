@@ -1,0 +1,21 @@
+<!-- 统计条 -->
+<view class="count-bar">
+  <text class="count-text">共浏览 <text class="count-num">{{total}}</text> 款芯片</text>
+  <text class="clear-link" tt:if="{{total > 0}}" bindtap="clearAll">清空</text>
+</view>
+
+<!-- 列表 -->
+<view class="list-area">
+  <block tt:if="{{list.length > 0}}">
+    <view class="list-item anim" tt:for="{{list}}" tt:key="id" style="animation-delay: {{item._delay}}ms">
+      <view class="item-main" bindtap="openDetail" data-id="{{item.id}}">
+        <text class="item-model">{{item.model}}</text>
+        <text class="item-sub">{{item.vendor}} · {{item._time}}</text>
+      </view>
+    </view>
+  </block>
+  <view class="empty" tt:else>
+    <text class="empty-icon">🕐</text>
+    <text class="empty-text">暂无浏览记录</text>
+  </view>
+</view>

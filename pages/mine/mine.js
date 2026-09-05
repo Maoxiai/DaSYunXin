@@ -2,14 +2,24 @@ const util = require('../../utils/util.js');
 
 Page({
   data: {
-    favorites: [],
-    views: []
+    favCount: 0,
+    favPreview: [],
+    viewCount: 0,
+    viewPreview: []
   },
 
   onShow() {
+    this.refresh();
+  },
+
+  refresh() {
+    const favorites = util.getFavorites();
+    const views = util.getViewHistory();
     this.setData({
-      favorites: util.getFavorites(),
-      views: util.getViewHistory()
+      favCount: favorites.length,
+      favPreview: favorites.slice(0, 3).map((f, i) => Object.assign({}, f, { _delay: i * 60 })),
+      viewCount: views.length,
+      viewPreview: views.slice(0, 3).map((v, i) => Object.assign({}, v, { _delay: i * 60 }))
     });
   },
 
@@ -19,9 +29,17 @@ Page({
     });
   },
 
+  goFavorites() {
+    tt.navigateTo({ url: '/pages/mine/favorites/favorites' });
+  },
+
+  goHistory() {
+    tt.navigateTo({ url: '/pages/mine/history/history' });
+  },
+
   removeFav(e) {
-    const favorites = util.removeFavoriteById(e.currentTarget.dataset.id);
-    this.setData({ favorites });
+    util.removeFavoriteById(e.currentTarget.dataset.id);
+    this.refresh();
     tt.showToast({ title: '已取消收藏', icon: 'none' });
   },
 
@@ -32,7 +50,8 @@ Page({
       confirmColor: '#4A90E2',
       success: (res) => {
         if (res.confirm) {
-          this.setData({ views: util.clearViewHistory() });
+          util.clearViewHistory();
+          this.refresh();
         }
       }
     });

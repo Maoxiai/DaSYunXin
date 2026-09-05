@@ -4,6 +4,8 @@
     "pages/category/category",
     "pages/tools/tools",
     "pages/mine/mine",
+    "pages/mine/favorites/favorites",
+    "pages/mine/history/history",
     "pages/detail/detail",
     "pages/list/list",
     "pages/tools/resistor/resistor",
