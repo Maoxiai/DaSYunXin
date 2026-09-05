@@ -44,9 +44,9 @@
     <text class="link-btn" bindtap="clearHistory">清空</text>
   </view>
   <view class="tag-list">
-    <view class="tag" tt:for="{{history}}" tt:key="*this">
-      <text bindtap="tapHistory" data-kw="{{item}}">{{item}}</text>
-      <text class="tag-del" catchtap="removeHistoryItem" data-kw="{{item}}">✕</text>
+    <view class="tag anim-tag" tt:for="{{history}}" tt:key="kw" style="animation-delay: {{item._delay}}ms">
+      <text bindtap="tapHistory" data-kw="{{item.kw}}">{{item.kw}}</text>
+      <text class="tag-del" catchtap="removeHistoryItem" data-kw="{{item.kw}}">✕</text>
     </view>
   </view>
 </view>

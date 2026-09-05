@@ -1,5 +1,10 @@
 const util = require('../../utils/util.js');
 
+// 把历史字符串数组转成带 stagger 延迟的对象数组，供模板弹入动画使用
+function historyItems(arr) {
+  return (arr || []).map((kw, i) => ({ kw, _delay: Math.min(i, 10) * 40 }));
+}
+
 Page({
   data: {
     searchKeyword: '',
@@ -15,14 +20,14 @@ Page({
 
   onLoad() {
     this.setData({
-      history: util.getHistory(),
+      history: historyItems(util.getHistory()),
       hotChips: util.getHotChips(24).map((c, i) => Object.assign({}, c, { _delay: Math.min(i, 12) * 40 }))
     });
   },
 
   onShow() {
     // 从详情页返回时刷新历史
-    this.setData({ history: util.getHistory() });
+    this.setData({ history: historyItems(util.getHistory()) });
   },
 
   // 输入框采用半受控模式：输入/粘贴时不回写 value，避免 setData 重渲染干扰粘贴；
@@ -59,7 +64,7 @@ Page({
     this.setData({ isLoading: true, suggestions: [] });
     // 本地库搜索（离线可用），后续可叠加远程 API 增补
     const results = util.searchChips(keyword).map((c, i) => Object.assign({}, c, { spec: util.specLine(c), _delay: Math.min(i, 12) * 50 }));
-    const history = util.addHistory(keyword);
+    const history = historyItems(util.addHistory(keyword));
     this.setData({ results, history, isLoading: false });
   },
 
@@ -78,7 +83,7 @@ Page({
   },
 
   removeHistoryItem(e) {
-    const history = util.removeHistory(e.currentTarget.dataset.kw);
+    const history = historyItems(util.removeHistory(e.currentTarget.dataset.kw));
     this.setData({ history });
   },
 
@@ -89,7 +94,7 @@ Page({
       confirmColor: '#4A90E2',
       success: (res) => {
         if (res.confirm) {
-          this.setData({ history: util.clearHistory() });
+          this.setData({ history: historyItems(util.clearHistory()) });
         }
       }
     });
