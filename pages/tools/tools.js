@@ -37,9 +37,16 @@ const categories = [
   }
 ];
 
+// 给每个工具加 stagger 进入延迟（跨分类连续编号）
+let _d = 0;
+const cats = categories.map((cat) => ({
+  name: cat.name,
+  tools: cat.tools.map((t) => Object.assign({}, t, { _delay: Math.min(_d++, 12) * 50 }))
+}));
+
 Page({
   data: {
-    categories
+    categories: cats
   },
 
   openTool(e) {

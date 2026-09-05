@@ -143,3 +143,34 @@
   font-size: 22rpx;
   padding: 20rpx 0 60rpx;
 }
+
+/* 进入动画 */
+.anim-hero {
+  animation: slideDown 0.5s ease both;
+}
+
+.anim-panel {
+  animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

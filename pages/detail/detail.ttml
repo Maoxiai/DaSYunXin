@@ -1,6 +1,6 @@
 <view tt:if="{{chip}}">
   <!-- 顶部信息卡 -->
-  <view class="hero">
+  <view class="hero anim-hero">
     <view class="hero-top">
       <text class="hero-model">{{chip.model}}</text>
       <view class="fav-btn {{isFav ? 'fav-active' : ''}}" bindtap="toggleFavorite">
@@ -15,7 +15,7 @@
   </view>
 
   <!-- 核心参数 -->
-  <view class="panel">
+  <view class="panel anim-panel" style="animation-delay: 80ms">
     <view class="panel-title">核心参数</view>
     <view class="param-row" tt:for="{{params}}" tt:key="k">
       <text class="param-key">{{item.k}}</text>
@@ -24,7 +24,7 @@
   </view>
 
   <!-- 引脚定义 -->
-  <view class="panel" tt:if="{{pinRows.length > 0}}">
+  <view class="panel anim-panel" tt:if="{{pinRows.length > 0}}" style="animation-delay: 140ms">
     <view class="panel-title">引脚定义（{{chip.package}}）</view>
     <view class="pin-head">
       <text class="pin-no">脚位</text>
@@ -39,7 +39,7 @@
   </view>
 
   <!-- 替代/兼容型号 -->
-  <view class="panel" tt:if="{{chip.alts.length > 0}}">
+  <view class="panel anim-panel" tt:if="{{chip.alts.length > 0}}" style="animation-delay: 200ms">
     <view class="panel-title">替代 / 兼容型号</view>
     <view class="alt-list">
       <text

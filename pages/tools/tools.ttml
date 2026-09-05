@@ -2,12 +2,13 @@
   <view class="cat-title">{{cat.name}}</view>
   <view class="tool-grid">
     <view
-      class="tool-item"
+      class="tool-item anim"
       tt:for="{{cat.tools}}"
       tt:for-item="tool"
       tt:key="id"
       bindtap="openTool"
       data-id="{{tool.id}}"
+      style="animation-delay: {{tool._delay}}ms"
     >
       <text class="tool-icon">{{tool.icon}}</text>
       <text class="tool-name">{{tool.name}}</text>

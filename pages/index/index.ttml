@@ -58,11 +58,12 @@
   </view>
   <view class="chip-grid">
     <view
-      class="chip-tag"
+      class="chip-tag anim"
       tt:for="{{hotChips}}"
       tt:key="id"
       bindtap="openDetail"
       data-id="{{item.id}}"
+      style="animation-delay: {{item._delay}}ms"
     >
       <text class="chip-tag-model">{{item.model}}</text>
       <text class="chip-tag-vendor">{{item.vendor}}</text>
@@ -74,11 +75,12 @@
 <view class="result-area" tt:if="{{results !== null}}">
   <block tt:if="{{results.length > 0}}">
     <view
-      class="result-item"
+      class="result-item anim"
       tt:for="{{results}}"
       tt:key="id"
       bindtap="openDetail"
       data-id="{{item.id}}"
+      style="animation-delay: {{item._delay}}ms"
     >
       <view class="ri-top">
         <text class="ri-model">{{item.model}}</text>

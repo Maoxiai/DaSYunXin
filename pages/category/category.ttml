@@ -7,12 +7,13 @@
 <!-- 厂商宫格 -->
 <view class="grid" tt:if="{{activeTab === 'vendor'}}">
   <view
-    class="grid-item"
+    class="grid-item anim"
     tt:for="{{vendorGroups}}"
     tt:key="name"
     bindtap="openList"
     data-type="vendor"
     data-value="{{item.name}}"
+    style="animation-delay: {{item._delay}}ms"
   >
     <text class="gi-name">{{item.name}}</text>
     <text class="gi-count">{{item.count}} 款</text>
@@ -22,12 +23,13 @@
 <!-- 品类宫格 -->
 <view class="grid" tt:if="{{activeTab === 'category'}}">
   <view
-    class="grid-item"
+    class="grid-item anim"
     tt:for="{{categoryGroups}}"
     tt:key="name"
     bindtap="openList"
     data-type="category"
     data-value="{{item.name}}"
+    style="animation-delay: {{item._delay}}ms"
   >
     <text class="gi-name">{{item.name}}</text>
     <text class="gi-count">{{item.count}} 款</text>

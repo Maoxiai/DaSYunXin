@@ -9,8 +9,8 @@ Page({
 
   onLoad() {
     this.setData({
-      vendorGroups: util.getVendorGroups(),
-      categoryGroups: util.getCategoryGroups()
+      vendorGroups: util.getVendorGroups().map((g, i) => Object.assign({}, g, { _delay: Math.min(i, 12) * 40 })),
+      categoryGroups: util.getCategoryGroups().map((g, i) => Object.assign({}, g, { _delay: Math.min(i, 12) * 40 }))
     });
   },
 

@@ -16,7 +16,7 @@ Page({
   onLoad() {
     this.setData({
       history: util.getHistory(),
-      hotChips: util.getHotChips(24)
+      hotChips: util.getHotChips(24).map((c, i) => Object.assign({}, c, { _delay: Math.min(i, 12) * 40 }))
     });
   },
 
@@ -58,7 +58,7 @@ Page({
     }
     this.setData({ isLoading: true, suggestions: [] });
     // 本地库搜索（离线可用），后续可叠加远程 API 增补
-    const results = util.searchChips(keyword).map((c) => Object.assign({}, c, { spec: util.specLine(c) }));
+    const results = util.searchChips(keyword).map((c, i) => Object.assign({}, c, { spec: util.specLine(c), _delay: Math.min(i, 12) * 50 }));
     const history = util.addHistory(keyword);
     this.setData({ results, history, isLoading: false });
   },
