@@ -12,7 +12,14 @@
     />
     <view class="clear-btn" tt:if="{{hasInput}}" bindtap="clearInput">✕</view>
   </view>
-  <button class="search-btn" bindtap="onSearch">搜索</button>
+  <view class="search-btn" hover-class="search-btn-hover" hover-stay-time="80" bindtap="onSearch">
+    <view class="shimmer"></view>
+    <view class="ripple" tt:for="{{ripples}}" tt:key="id"></view>
+    <view class="btn-content">
+      <view class="btn-spinner" tt:if="{{isLoading}}"></view>
+      <text class="btn-text">{{isLoading ? '搜索中' : '搜索'}}</text>
+    </view>
+  </view>
 </view>
 
 <!-- 自动补全建议 -->

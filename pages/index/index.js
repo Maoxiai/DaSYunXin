@@ -9,7 +9,8 @@ Page({
     hotChips: [],
     // null = 还未搜索（展示历史+热门）；数组 = 搜索结果
     results: null,
-    isLoading: false
+    isLoading: false,
+    ripples: []
   },
 
   onLoad() {
@@ -38,7 +39,18 @@ Page({
     this.setData({ searchKeyword: '', hasInput: false, suggestions: [], results: null });
   },
 
+  // 点击搜索按钮时触发波纹涟漪动效
+  triggerRipple() {
+    const id = (this._rippleId = (this._rippleId || 0) + 1);
+    const ripples = this.data.ripples.concat({ id });
+    this.setData({ ripples });
+    setTimeout(() => {
+      this.setData({ ripples: this.data.ripples.filter((r) => r.id !== id) });
+    }, 700);
+  },
+
   onSearch() {
+    this.triggerRipple();
     const keyword = (this.keyword !== undefined ? this.keyword : this.data.searchKeyword).trim();
     if (keyword.length < 2) {
       tt.showToast({ title: '请至少输入 2 个字符', icon: 'none' });
