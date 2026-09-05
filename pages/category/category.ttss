@@ -1,7 +1,13 @@
 .tab-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
   background: #fff;
   padding: 0 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
 }
 
 .tab-item {
@@ -33,7 +39,7 @@
 .grid {
   display: flex;
   flex-wrap: wrap;
-  padding: 20rpx 12rpx;
+  padding: 110rpx 12rpx 20rpx;
 }
 
 .grid-item {

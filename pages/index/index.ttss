@@ -1,9 +1,19 @@
-/* 搜索区 */
+/* 搜索区（吸顶固定） */
 .search-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   padding: 20rpx;
   display: flex;
   align-items: center;
   background: #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.page-body {
+  padding-top: 112rpx;
 }
 
 .input-wrap {

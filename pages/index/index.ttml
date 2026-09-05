@@ -22,6 +22,7 @@
   </view>
 </view>
 
+<view class="page-body">
 <!-- 自动补全建议 -->
 <view class="suggestions" tt:if="{{suggestions.length > 0}}">
   <view
@@ -101,3 +102,4 @@
 
 <!-- 加载提示 -->
 <view class="loading" tt:if="{{isLoading}}">加载中...</view>
+</view>
